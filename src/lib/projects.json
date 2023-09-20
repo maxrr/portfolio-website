@@ -1,0 +1,68 @@
+{
+    "projects": [
+        {
+            "title": "This Website",
+            "id": "portfolio-website",
+            "featured": true,
+            "tags": [
+                "SvelteKit",
+                "HTML",
+                "CSS",
+                "Node.js"
+            ],
+            "description": "This website has been a great jump into web design for me. Never before have I made a site from scratch and deployed it, so this was certainly a learning experience. Let's make this line a little longer so it starts to overflow and we can demo the cut-line feature.",
+            "img": {
+                "url": "/pub_header.png",
+                "alt": "Rountree.me logo banner"
+            },
+            "links": [
+                {
+                    "site": "github",
+                    "url": "https://github.com/maxrr/portfolio-website",
+                    "text": "View on Github"
+                }
+            ]
+        },
+        {
+            "title": "Discord Bots",
+            "id": "discord-bots",
+            "featured": false,
+            "tags": [
+                "Node.js"
+            ],
+            "description": "I've made a few Discord Bots for utility, and for fun. One of them makes dad jokes, one of them checks whether a source server is running, and another was for moderation. Only the dad jokes one is public - I should really get around to making the other ones public too.",
+            "img": {
+                "url": "https://media.cybernews.com/images/featured/2020/07/Discord-privacy-tips-that-you-should-use-.jpg",
+                "alt": "Discord logo banner"
+            },
+            "links": [
+                {
+                    "site": "github",
+                    "url": "https://github.com/maxrr/dadbot",
+                    "text": "View on Github"
+                }
+            ]
+        },
+        {
+            "title": "Garry's Mod Addons",
+            "id": "gmod-addons",
+            "featured": true,
+            "tags": [
+                "Lua",
+                "SQL"
+            ],
+            "description": "Over many years I worked to create and maintain custom addons for a server I ran on a game called Garry's Mod. This server began in 2014 and was shut down in 2022. I worked on these addons both solo and with a fellow developer and friend, and spent many late nights debugging really horrible spaghetti code.\n\nThis was a great learning experience for me because before this the most involved experience I had with any kind of programming was hand-holding JavaScript tutorials on codecademy.com. I find it really fun to look back at how it all began with horribly optimized implementations. If I were to do this whole thing again, you can bet I'd do it a lot differently.\n\nVery much looking forward to S&box's full release.",
+            "img": {
+                "url": "https://files.facepunch.com/lewis/1b1511b1/gmod-meta.jpg",
+                "alt": "Garry's mod logo banner"
+            },
+            "links": [
+                {
+                    "site": "github",
+                    "url": "https://github.com/maxrr/hazard-addons",
+                    "text": "View on Github"
+                }
+            ]
+        }
+    ]
+}

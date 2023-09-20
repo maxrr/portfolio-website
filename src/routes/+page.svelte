@@ -1,173 +1,182 @@
-<!--
-<h1>Welcome to SvelteKit</h1>
-    <p>Visit <a href='https://kit.svelte.dev'>kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { LightSwitch, popup } from '@skeletonlabs/skeleton';
+	import type { PageData } from './$types';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
-    Flexbox guide: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-    Site for icons: https://iconmonstr.com/
-    Three.js examples: https://freefrontend.com/three-js-examples/
-    Cool flowing pattern: https://codepen.io/soju22/pen/PLeLwo
-    https://stackoverflow.com/questions/27198525/three-js-what-is-planebuffergeometry
--->
-<head>
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin=true>
-    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&display=swap' rel='stylesheet'>
-</head>
-
-<script>
-    import Splash from './components/Splash.svelte';
-    import Section from './components/Section.svelte';
-    import Panel from './components/Panel.svelte';
-    import SkillsList from './components/SkillsList.svelte';
-    //import { onMount } from 'svelte';
-    //import { createNoise3D } from 'simplex-noise';
-    import ThemeContext from './components/ThemeContext.svelte';
-    // import theme from './components/ThemeContext.svelte';
-    import changeTheme from './components/ThemeContext.svelte';
-
-    const socials = [
-        { name: 'linkedin', url: 'https://linkedin.com/in/maxrountree', src: 'M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z' },
-        { name: 'github', url: 'https://github.com/maxrr', src: 'M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z' } 
-    ];
+	export let data: PageData;
 </script>
 
-<ThemeContext/>
+<div class="absolute top-4 right-4"><LightSwitch /></div>
 
-<button on:click={() => changeTheme}>
-    <p>Test</p>
-</button>
+<!-- 
+	TODO: Figure out why I HAVE to specify h-auto min-h-full...
+	It seems like the calculation using h-full here takes 100% of the element's `auto` calculated height
+	instead of the height set by min-height. Very strange.
+-->
+<!-- <div class="h-auto min-h-screen m-auto flex items-center py-24"> -->
+<div class="m-auto min-h-screen flex items-center py-24">
+	<div
+		class="container mx-auto flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 xl:w-3/4 max-w-6xl gap-24 shrink-0"
+	>
+		<!-- Left panel - name, subtitle, links -->
+		<div class="flex flex-col gap-4 justify-center items-center lg:items-start grow-0">
+			<h1 class="h1 text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left">
+				Max<br />
+				<span class="underline underline-offset-[30px]">Rountree</span>
+			</h1>
 
-<Splash>
-    <div style='display: grid; height: 100%; flex-basis: 100%'>
-        <div style='z-index: -1; grid-column: 1; grid-row: 1'><!--<canvas id='fungraphic'/>--></div>
-        <div class='flexCenterAll' style='z-index: 1; grid-column: 1; grid-row: 1'>
-            <h1 class='headline'>Hi, I'm Max.</h1> <br />
-            <!-- <h2 class='subHeadline'>I make websites that wow.</h2> -->
-            <h2 class='subHeadline'>This is my site. I'm not done with it yet.</h2>
+			<p class="h2 font-normal pt-7 pb-2">I like to make things.</p>
+			<div class="flex gap-4 w-auto float-left">
+				<a
+					href="https://www.linkedin.com/in/maxrountree/"
+					target="_blank"
+					class="[&>*]:pointer-events-none svglink"
+					use:popup={{
+						event: 'hover',
+						target: 'popupLinkedin',
+						placement: 'top'
+					}}
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+						><path
+							class="fill-token"
+							d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+						/></svg
+					>
+				</a>
+				<div class="card py-1 px-2 variant-glass-primary" data-popup="popupLinkedin">
+					<p>/in/maxrountree</p>
+				</div>
+				<a
+					href="https://github.com/maxrr"
+					target="_blank"
+					class="[&>*]:pointer-events-none svglink"
+					use:popup={{
+						event: 'hover',
+						target: 'popupGithub',
+						placement: 'bottom'
+					}}
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+						><path
+							d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+						/></svg
+					>
+				</a>
+				<div class="card py-1 px-2 variant-glass-primary" data-popup="popupGithub">
+					<p>/maxrr</p>
+				</div>
+				<a
+					href="mailto:max@rountree.me"
+					class="[&>*]:pointer-events-none svglink"
+					use:popup={{
+						event: 'hover',
+						target: 'popupEmail',
+						placement: 'top'
+					}}
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
+						><path
+							d="M13.718 10.528c0 .792-.268 1.829-.684 2.642-1.009 1.98-3.063 1.967-3.063-.14 0-.786.27-1.799.687-2.58 1.021-1.925 3.06-1.624 3.06.078zm10.282 1.472c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-5-1.194c0-3.246-2.631-5.601-6.256-5.601-4.967 0-7.744 3.149-7.744 7.073 0 3.672 2.467 6.517 7.024 6.517 2.52 0 4.124-.726 5.122-1.288l-.687-.991c-1.022.593-2.251 1.136-4.256 1.136-3.429 0-5.733-2.199-5.733-5.473 0-5.714 6.401-6.758 9.214-5.071 2.624 1.642 2.524 5.578.582 7.083-1.034.826-2.199.799-1.821-.756 0 0 1.212-4.489 1.354-4.975h-1.364l-.271.952c-.278-.785-.943-1.295-1.911-1.295-2.018 0-3.722 2.19-3.722 4.783 0 1.73.913 2.804 2.38 2.804 1.283 0 1.95-.726 2.364-1.373-.3 2.898 5.725 1.557 5.725-3.525z"
+						/></svg
+					>
+				</a>
+			</div>
+			<div class="card py-1 px-2 variant-glass-primary" data-popup="popupEmail">
+				<p>max@rountree.me</p>
+			</div>
+		</div>
 
-            <div class='socialsContainer flexCenterAll' style='margin-top: 1em; gap: 2em'>
-                {#each socials as social}
-                    <a href={social.url} target='_blank' rel="noreferrer"><svg viewBox='0 0 24 24' class='socialLinkIcon'><path d="{social.src}"/></svg></a>
-                {/each}
-            </div>
-        </div>
-    </div>
-</Splash>
-
-<div style='margin-top: -7em'>
-    <Section>
-        <Panel>
-            <h1 style='margin-right: auto; margin-bottom: 0.1em;'>About Me</h1>
-            <p>I'm in my last year at UW-Madison. I have experience working in C, Java, JavaScript, Python, and Lua. I'm always open to new opportunities - please reach out to me using the links above if you want to get in touch.</p>
-        </Panel>
-    </Section>
-</div>
-
-    
-<div style='width: 65vw; margin-right: auto; margin-left: auto; margin-bottom: 1em'>
-    <h1 style='margin: 0 auto 0 0.5em; flex-basis: 100%;'>Projects</h1>
-</div>
-
-<div style='width: 65vw; margin-right: auto; margin-left: auto; margin-bottom: 2em; columns: 2 280px; column-gap: 1em;'>
-    <Panel display='inline-block'>
-        <h2>This Website</h2>
-        <div style='margin: 0.25em 0'><SkillsList skills={['HTML & CSS', 'Svelte']}/></div>
-        <p>This website was built using <a href='https://svelte.dev/' target='_blank' rel='noreferrer'>Svelte</a>. It's overkill for a small, static website like this, but I'm enjoying learning about it through this project. This tool is really cool!</p>
-    </Panel>
-
-    <!-- <Panel display='inline-block'>
-        <h2>Sample Project</h2>
-        <p>I haven't made this project yet, but it's here!</p>
-    </Panel> -->
-
-    <Panel display='inline-block'>
-        <h2>Garry's Mod</h2>
-        <div style='margin: 0.25em 0'><SkillsList skills={['Lua', 'SQL']}/></div>
-        <p>I managed and developed custom addons for a <a href='https://store.steampowered.com/app/4000' target='_blank' rel='noreferrer'>Garry's Mod</a> <a href='https://hgaming.net' target='_blank' rel='noreferrer'>game server</a> for 8 years. They were written in <a href='https://wiki.facepunch.com/gmod#learning' target='_blank' rel='noreferrer'>GLua</a>, a version of Lua with some added libraries. You can find these addons on my <a href='https://github.com/maxrr/hazard-addons' target='_blank' rel='noreferrer'>GitHub</a>, also linked above.</p>
-    </Panel>
-
-    <Panel display='block'>
-        <h2>Discord Bots</h2>
-        <div style='margin: 0.25em 0'><SkillsList skills={['Node.js', 'Typescript']}/></div>
-        <p>I've created multiple Discord bots using Node.js, a few of which used Typescript. You can find one of them on my Github <a href='https://github.com/maxrr/dadbot' target='_blank' rel='noreferrer'>here</a>.</p>
-    </Panel>
+		<!-- Projects -->
+		<div
+			class="projects flex flex-wrap self-center justify-center lg:self-start float-none lg:float-right text-center lg:text-right lg:mr-0 lg:justify-end overflow-x-clip basis-full w-full shrink"
+		>
+			<!-- <h2 class="h2 w-full">
+      Welcome, you're the {numVisitor + numVisitorEnding} visitor!
+    </h2> -->
+			<h2 class="h2 mb-4 basis-full">Featured Projects</h2>
+			<div
+				class="snap-x scroll-px-4 flex flex-col lg:flex-row items-center gap-4 pb-2 snap-mandatory overflow-x-auto basis-full lg:basis-auto"
+			>
+				<!-- {#await data.projects}
+					<h2 class="h2">Loading...</h2>
+				{:then projects}
+					
+				{/await} -->
+				{#each data.projects as project}
+					{#if project.featured}
+						<ProjectCard {project} />
+					{/if}
+				{/each}
+				<!-- <div class="card p-0 dark:variant-glass-surface">
+					<img
+						src="https://getwallpapers.com/wallpaper/full/2/e/a/1275454-super-cool-backgrounds-1920x1080-large-resolution.jpg"
+						alt="Cool tie-dye"
+						class="m-0"
+					/>
+					<div class="content p-4">
+						<h4 class="h4 title">Project Title 1</h4>
+						<p class="description">
+							Project description, but this description is very long. So long in fact that I think
+							it should be cut off after a few lines of description. We don't want the user to have
+							to read too much at once, now do we? <br /> <br /> Project description, but this description
+							is very long. So long in fact that I think it should be cut off after a few lines of description.
+							We don't want the user to have to read too much at once, now do we?
+						</p>
+						<button class="btn variant-glass-surface mt-3 py-1 px-3 rounded-md"
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								class="-ml-1 mr-1.5"
+								><path
+									d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+								/></svg
+							>View on GitHub</button
+						>
+					</div>
+				</div>
+				<div class="card p-4">
+					<h4 class="h4">Project Title 1</h4>
+					<p>Project description</p>
+				</div>
+				<div class="card p-4">
+					<h4 class="h4">Project Title 1</h4>
+					<p>Project description</p>
+				</div>
+				<div class="card p-4">
+					<h4 class="h4">Project Title 1</h4>
+					<p>Project description</p>
+				</div> -->
+			</div>
+			<a href="/projects">
+				<!-- <h4 class="h4 mt-1 underline hover:brightness-50 transition-all">View all projects</h4> -->
+				<button
+					class="btn variant-glass-tertiary dark:variant-glass-surface rounded-md mt-2 px-4 py-2"
+					>View all projects</button
+				>
+			</a>
+		</div>
+	</div>
 </div>
 
 <style>
-    :global(body) {
-        margin: 0px; padding: 0px;
-        background-color: #222133;
-        background-color: var(--theme-background);
-    }
+	h1 {
+		@apply drop-shadow-2xl;
+	}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #abb3d6;
-    }
+	path {
+		@apply fill-token;
+	}
 
-    p {
-        font-size: 18px;
-    }
+	a > svg > path {
+		@apply transition-all;
+		transition: 0.12s all ease;
+	}
 
-    a {
-        transition: color 0.05s ease;
-    }
-
-    a:visited {
-        color: #8088a9;
-    }
-
-    a:link {
-        color: #979ebc;
-    }
-
-    a:hover {
-        color: #746fb1;
-    }
-
-    a:active{
-        color: #b1b8d9;
-    }
-
-    .headline {
-        font-size: 5em;
-        flex-basis: 100%;
-    }
-
-    .subHeadline {
-        font-size: 2em;
-        flex-basis: 100%;
-        color: #8b90a9;
-    }
-
-    .flexCenterAll {
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .socialsContainer {
-        margin: 1em;
-        padding: 1em;
-        gap: 0.75em;
-        background-color: #222133;
-        border-radius: 8px;
-        box-shadow: 0px 0px 7px 0px rgb(30, 30, 30);
-    }
-
-    .socialLinkIcon {
-        width: 2em;
-        height: 2em;
-        fill: #abb3d6;
-    }
-
-    .socialLinkIcon:hover {
-        fill: #615eab;
-        transition: fill 0.1s;
-    }
+	a:hover > svg > path {
+		@apply brightness-50;
+		transform: scale(0.95) translate(2.5%, 2.5%);
+	}
 </style>

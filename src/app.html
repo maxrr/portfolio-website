@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+<html lang="en" class="dark">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width" />
+	%sveltekit.head%
+	<style>
+		/* body {
+			background: linear-gradient(-45deg, #495a8f, #65498f, #497f8f, #498f69) !important;
+			background-size: 400% 400% !important;
+			animation: gradient 15s ease infinite !important;
+		}
+
+		.dark body {
+			background: linear-gradient(-45deg, #495a8f, #65498f, #497f8f, #498f69) !important;
+			background-size: 400% 400% !important;
+			animation: gradient 15s ease infinite !important;
+		}
+
+		@keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+
+			50% {
+				background-position: 100% 50%;
+			}
+
+			100% {
+				background-position: 0% 50%;
+			}
+		} */
+
+		body {
+			@apply bg-primary-50-900-token;
+			min-height: 400px;
+		}
+	</style>
+</head>
+<body data-sveltekit-preload-data="hover" data-theme="wintry">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
 </html>
