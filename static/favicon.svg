@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="16"
+   height="16"
+   viewBox="0 0 4.2333332 4.2333335"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="C:\Users\maxrr\Desktop\Personal\PortfolioWebsite\new-test\static\favicon.png"
+   inkscape:export-xdpi="302.38"
+   inkscape:export-ydpi="302.38"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:snap-global="true"
+     inkscape:snap-intersection-paths="false"
+     inkscape:zoom="58.15625"
+     inkscape:cx="2.29554"
+     inkscape:cy="9.6550242"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient15607">
+      <stop
+         style="stop-color:#0047af;stop-opacity:1;"
+         offset="0"
+         id="stop15603" />
+      <stop
+         style="stop-color:#002457;stop-opacity:1"
+         offset="1"
+         id="stop15605" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient15607"
+       id="linearGradient16123"
+       x1="2.8786075"
+       y1="3.9045014"
+       x2="1.0707375"
+       y2="0.2126549"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <circle
+       style="fill:url(#linearGradient16123);fill-opacity:1;stroke:none;stroke-width:4.14504;paint-order:markers stroke fill"
+       id="path11613"
+       cx="2.1166666"
+       cy="2.1166666"
+       r="2.1166666" />
+    <path
+       d="M 6.1753978,2.4868377 V 0.8558088 H 5.6866563 L 5.3934114,2.0520604 5.1001665,0.8558088 H 4.60165 V 2.4868377 H 4.9168883 V 1.3741026 L 5.2174644,2.4868377 H 5.554696 L 5.8577158,1.3691899 v 1.1176478 z"
+       style="font-size:2.45003px;line-height:1.25;font-family:Coolvetica;-inkscape-font-specification:Coolvetica;fill:#ffffff;stroke-width:0.061251"
+       id="path12045" />
+    <path
+       d="m 7.0673504,1.1382912 c 0.1686158,0 0.2370396,0.090885 0.2370396,0.2186168 0,0.1252748 -0.068424,0.2161605 -0.2492582,0.2161605 H 6.6299267 V 1.1382912 Z M 7.5780853,2.4868377 V 2.0250404 c 0,-0.1915969 -0.053762,-0.2726569 -0.1979404,-0.319328 C 7.5365423,1.6492156 7.622072,1.5018338 7.622072,1.3274316 7.622072,1.057231 7.4241317,0.8558088 7.1235557,0.8558088 H 6.3000261 V 2.4868377 H 6.6299267 V 1.8481818 h 0.3616687 c 0.1954967,0 0.2541456,0.061409 0.2541456,0.2186168 v 0.4200391 z"
+       style="font-size:2.45003px;line-height:1.25;font-family:Coolvetica;-inkscape-font-specification:Coolvetica;fill:#ffffff;stroke-width:0.061251"
+       id="path12047" />
+    <path
+       id="path12302"
+       style="fill:#005f93;fill-opacity:1;stroke:none;stroke-width:0.999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 10.904297 5.8554688 L 9.6601562 6.0742188 L 8.0253906 10.294922 L 5.9765625 6.0976562 L 5.4394531 6.3417969 L 2.4335938 13.740234 A 7.9999996 7.9999996 0 0 0 8 16 A 7.9999996 7.9999996 0 0 0 13.560547 13.746094 L 10.904297 5.8554688 z "
+       transform="scale(0.26458333)" />
+    <path
+       id="path12070"
+       style="font-size:2.45003px;line-height:1.25;font-family:Coolvetica;-inkscape-font-specification:Coolvetica;fill:#ffffff;stroke-width:0.258418"
+       d="M 4.2949219,4.9179688 1.3398438,12.425781 c 0.3165746,0.475969 0.6832521,0.916637 1.09375,1.314453 L 5.3658997,6.9012706 7.1953125,11.082031 h 1.5878906 l 1.8616619,-4.2245015 2.915682,6.8885645 c 0.412873,-0.399351 0.781536,-0.842008 1.099609,-1.320313 L 11.705078,4.9179688 H 9.4042969 L 8.0234375,9.4394531 6.6425781,4.9179688 Z"
+       transform="scale(0.26458333)"
+       sodipodi:nodetypes="cccccccccccccc" />
+  </g>
+</svg>

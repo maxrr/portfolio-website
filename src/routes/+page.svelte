@@ -19,7 +19,7 @@
 		class="container mx-auto flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 xl:w-3/4 max-w-6xl gap-24 shrink-0"
 	>
 		<!-- Left panel - name, subtitle, links -->
-		<div class="flex flex-col gap-4 justify-center items-center lg:items-start grow-0">
+		<div class="flex flex-col gap-4 justify-center items-center lg:items-start">
 			<h1 class="h1 text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left">
 				Max<br />
 				<span class="underline underline-offset-[30px]">Rountree</span>
@@ -89,15 +89,17 @@
 
 		<!-- Projects -->
 		<div
-			class="projects flex flex-wrap self-center justify-center lg:self-start float-none lg:float-right text-center lg:text-right lg:mr-0 lg:justify-end overflow-x-clip basis-full w-full shrink"
+			class="projects flex flex-wrap self-center items-center justify-center lg:self-start float-none lg:float-right text-center lg:text-right lg:mr-0 lg:justify-end overflow-x-clip basis-full"
 		>
 			<!-- <h2 class="h2 w-full">
       Welcome, you're the {numVisitor + numVisitorEnding} visitor!
     </h2> -->
 			<h2 class="h2 mb-4 basis-full">Featured Projects</h2>
 			<div
-				class="snap-x scroll-px-4 flex flex-col lg:flex-row items-center gap-4 pb-2 snap-mandatory overflow-x-auto basis-full lg:basis-auto"
+				class="scroll-smooth scroll-px-4 flex flex-row flex-wrap lg:flex-nowrap lg:flex-row items-center justify-center lg:justify-start gap-4 p-2 overflow-x-auto basis-full lg:basis-auto"
 			>
+				<!-- Use snap-mandatory and snap-x -->
+
 				<!-- {#await data.projects}
 					<h2 class="h2">Loading...</h2>
 				{:then projects}

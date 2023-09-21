@@ -1,9 +1,9 @@
 import type { Handle } from "@sveltejs/kit";
-import { readdirSync, promises, type PathLike, readFileSync } from "fs";
-import { fileURLToPath } from "node:url";
+// import { readdirSync, promises, type PathLike, readFileSync } from "fs";
+// import { fileURLToPath } from "node:url";
 
-const path: string = fileURLToPath(new URL('./lib/assets/', import.meta.url));
-const files: string[] = readdirSync(path);
+// const path: string = fileURLToPath(new URL('./lib/assets/', import.meta.url));
+// const files: string[] = readdirSync(path);
 
 export const handle: Handle = async ({ event, resolve }) => {
     // we can pass `event` because we used the SvelteKit middleware
@@ -18,5 +18,11 @@ export const handle: Handle = async ({ event, resolve }) => {
     //         return readFileSync(filename);
     //     }
     // }
+
+    // if (event.url.pathname.startsWith('/content/')) {
+    //     const filePath = `$lib/assets/pub/${event.url.pathname.substring(event.url.pathname.indexOf('/', 1) + 1).replaceAll('..', '')}`
+    //     console.log(filePath);
+    // }
+
     return await resolve(event);
 };

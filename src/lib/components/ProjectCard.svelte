@@ -1,74 +1,80 @@
 <script lang="ts">
-	import { local_img_match } from '$lib/assets/localUrlResolver';
+	import { local_img_match } from '$lib/util/localUrlResolver';
 	import { getModalStore } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
-	// import ModalProjectCard from './ModalProjectCard.svelte';
-
-	import type { ModalSettings } from '@skeletonlabs/skeleton';
 
 	export let project: import('$lib/server/loadProjects').Project;
 </script>
 
-<!-- <button
+<button
 	on:click={() => {
-		console.log(project.id);
+		const modal = {
+			type: 'component',
+			component: 'modalProjectCard',
+			valueAttr: { project: project }
+		};
+		// @ts-ignore
+		// This error won't go away because of some wacky typescript shenanigans... not going to spend too much time on it
+		modalStore.trigger(modal);
 	}}
-> -->
-<div
-	class="card project-card-{project.id} p-0 dark:variant-glass-surface shrink shadow-none !drop-shadow-md relative"
+	class="jacket"
 >
-	{#if project.img && project.img.url && project.img.alt}
-		<div
-			class="h-24 w-full bg-transparent project-image"
-			style={`background-image: url(${local_img_match[project.img.url] ?? project.img.url})`}
-			aria-label={`Image of ${project.img.alt}`}
-		/>
-	{/if}
-	<div class="content p-4 pt-3">
-		<h4 class="h4 title mb-1">{project?.title ?? 'Title'}</h4>
-		{#if project.tags}
-			<div class="flex flex-wrap gap-1 gap-y-1">
-				{#each project.tags as tag}
-					<span
-						class="badge variant-glass-surface dark:variant-surface rounded-md px-1.5 py-0.5 text-[0.75rem]"
-						>{tag}</span
-					>
-				{/each}
-			</div>
+	<div
+		class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative"
+	>
+		{#if project.img && project.img.url && project.img.alt}
+			<div
+				class="h-24 w-full bg-transparent project-image"
+				style={`background-image: url(${local_img_match[project.img.url] ?? project.img.url})`}
+				aria-label={`Image of ${project.img.alt}`}
+			/>
 		{/if}
-		<p
-			class={`description ${
-				project.img && project.img.url && project.img.alt ? 'line-clamp-4' : 'line-clamp-[8]'
-			}`}
-		>
-			{project?.description ?? 'Description'}
-		</p>
-		<div class="flex flex-col gap-2 mt-2">
-			{#if project.links}
-				{#each project.links as link}
-					<a href={link.url} target="_blank">
-						<button
-							class="btn variant-glass-surface hover:variant-soft-surface py-1 px-3 rounded-md"
+		<div class="content p-4 pt-3">
+			<h4 class="text-xl mb-1">{project?.title ?? 'Title'}</h4>
+			{#if project.tags}
+				<div class="flex flex-wrap gap-1 gap-y-1">
+					{#each project.tags as tag}
+						<span
+							class="badge variant-glass-surface dark:variant-surface rounded-md px-1.5 py-0.5 text-[0.75rem]"
+							>{tag}</span
 						>
-							{#if link.site == 'github'}<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="20"
-									height="20"
-									viewBox="0 0 24 24"
-									class="-ml-1 mr-1.5"
-									><path
-										d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-									/></svg
-								>{/if}{link.text ?? `View on ${link.site}`}</button
-						>
-					</a>
-				{/each}
+					{/each}
+				</div>
 			{/if}
+			<p
+				class={`description ${
+					project.img && project.img.url && project.img.alt ? 'line-clamp-4' : 'line-clamp-[8]'
+				}`}
+			>
+				{project?.description ?? 'Description'}
+			</p>
+			<div class="flex flex-col gap-2 mt-2">
+				{#if project.links}
+					{#each project.links as link}
+						<a href={link.url} target="_blank">
+							<button
+								class="btn variant-glass-surface hover:variant-soft-surface py-1 px-3 rounded-md"
+								on:click|stopPropagation
+							>
+								{#if link.site == 'github'}<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										class="-ml-1 mr-1.5"
+										><path
+											d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+										/></svg
+									>{/if}{link.text ?? `View on ${link.site}`}</button
+							>
+						</a>
+					{/each}
+				{/if}
+			</div>
 		</div>
-	</div>
-	{#if project.id}
-		<!-- <a href={`/projects/${project.id}`}> -->
-		<button
+
+		<!-- {#if project.id} -->
+		<!-- <button
 			on:click={() => {
 				const modal = {
 					type: 'component',
@@ -81,22 +87,6 @@
 			}}
 			class="btn variant-glass-surface hover:variant-soft-surface py-1 px-3 rounded-md absolute bottom-4 right-4 gap-1"
 		>
-			<!-- <svg
-				clip-rule="evenodd"
-				fill-rule="evenodd"
-				stroke-linejoin="round"
-				stroke-miterlimit="2"
-				viewBox="0 0 24 24"
-				width="15"
-				height="15"
-				xmlns="http://www.w3.org/2000/svg"
-				class="ml-1 mt-1"
-				><path
-					d="m13.022 14.999v3.251c0 .412.335.75.752.75.188 0 .375-.071.518-.206 1.775-1.685 4.945-4.692 6.396-6.069.2-.189.312-.452.312-.725 0-.274-.112-.536-.312-.725-1.451-1.377-4.621-4.385-6.396-6.068-.143-.136-.33-.207-.518-.207-.417 0-.752.337-.752.75v3.251h-9.02c-.531 0-1.002.47-1.002 1v3.998c0 .53.471 1 1.002 1z"
-					fill-rule="nonzero"
-				/>
-				</svg
-			> -->
 			<svg
 				clip-rule="evenodd"
 				fill-rule="evenodd"
@@ -111,12 +101,10 @@
 					fill-rule="nonzero"
 				/></svg
 			>More
-		</button>
-		<!-- </a> -->
-	{/if}
-</div>
-
-<!-- </button> -->
+		</button> -->
+		<!-- {/if} -->
+	</div>
+</button>
 
 <style>
 	path {
@@ -136,6 +124,20 @@
 		@apply flex-col;
 		@apply transition-all;
 		min-width: 18rem;
+		transform: translateZ(0rem) scale(1);
+		backface-visibility: hidden;
+		-webkit-font-smoothing: subpixel-antialiased;
+		/* z-index: 1; */
+	}
+
+	.card:hover {
+		/* transform: translateZ(2rem); */
+		transform: scale(1.04);
+		z-index: 2;
+	}
+
+	.jacket {
+		-webkit-perspective: 1000;
 	}
 
 	/* .projects .card img {
@@ -155,7 +157,7 @@
 
 	.card .content {
 		@apply min-w-fit;
-		@apply shrink;
+		/* @apply h-56; */
 	}
 
 	/* .card:hover {

@@ -19,9 +19,6 @@
 	<div class="sweater">
 		{#each data.projects as project}
 			<ProjectCard {project} />
-			<ProjectCard {project} />
-			<ProjectCard {project} />
-			<ProjectCard {project} />
 		{/each}
 	</div>
 </div>
@@ -40,7 +37,7 @@
 	.sweater {
 		@apply flex;
 		@apply flex-wrap;
-		@apply gap-5;
+		@apply gap-4;
 		@apply p-2;
 		@apply w-full;
 		@apply h-full;

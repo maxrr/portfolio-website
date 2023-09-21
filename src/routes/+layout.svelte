@@ -1,5 +1,7 @@
 <script lang="ts">
 	import ModalProjectCard from '$lib/components/ModalProjectCard.svelte';
+	import { getPageName, setPageName } from '$lib/util/pageNameResolver';
+	import { page } from '$app/stores';
 	import '../app.postcss';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 
@@ -16,8 +18,16 @@
 		}
 	};
 
+	// console.log(getPageName($page.url.pathname));
+
+	setPageName($page.url.pathname, 'Home');
+
 	initializeStores();
 </script>
+
+<svelte:head>
+	<title>{getPageName($page.url.pathname)}</title>
+</svelte:head>
 
 <Modal components={modalComponentRegistry} />
 

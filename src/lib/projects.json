@@ -10,9 +10,9 @@
                 "CSS",
                 "Node.js"
             ],
-            "description": "This website has been a great jump into web design for me. Never before have I made a site from scratch and deployed it, so this was certainly a learning experience. Let's make this line a little longer so it starts to overflow and we can demo the cut-line feature.",
+            "description": "This website has been a great jump into web design for me. Never before have I made a site from scratch and deployed it, so this was certainly a learning experience.",
             "img": {
-                "url": "/pub_header.png",
+                "url": "/site_header.png",
                 "alt": "Rountree.me logo banner"
             },
             "links": [
@@ -32,7 +32,7 @@
             ],
             "description": "I've made a few Discord Bots for utility, and for fun. One of them makes dad jokes, one of them checks whether a source server is running, and another was for moderation. Only the dad jokes one is public - I should really get around to making the other ones public too.",
             "img": {
-                "url": "https://media.cybernews.com/images/featured/2020/07/Discord-privacy-tips-that-you-should-use-.jpg",
+                "url": "/discord_header.png",
                 "alt": "Discord logo banner"
             },
             "links": [

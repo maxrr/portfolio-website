@@ -1,6 +1,7 @@
-import fs from 'node:fs/promises';
-import { error } from '@sveltejs/kit';
-import { fileURLToPath } from "node:url";
+// import fs from 'node:fs/promises';
+// import { error } from '@sveltejs/kit';
+// import { fileURLToPath } from "node:url";
+import { projects } from '$lib/projects.json';
 
 export type Project = {
     title: string,
@@ -12,20 +13,19 @@ export type Project = {
         url: string,
         alt: string,
     },
-    links?: [
-        {
-            site: string,
-            url: string,
-            text: string,
-        }
-    ]
+    links?: {
+        site: string,
+        url: string,
+        text: string,
+    }[]
 }
 
 export default async function load(): Promise<Project[]> {
     try {
-        const path = fileURLToPath(new URL('../projects.json', import.meta.url));
-        let fileContents = await fs.readFile(path, "utf-8");
-        return Promise.resolve(JSON.parse(fileContents).projects);
+        // const path = fileURLToPath(new URL('../projects.json', import.meta.url));
+        // let fileContents = await fs.readFile(path, "utf-8");
+        // return Promise.resolve(JSON.parse(fileContents).projects);
+        return Promise.resolve(projects);
     } catch (err) {
         console.error(err);
         return Promise.reject("Error while reading file");
