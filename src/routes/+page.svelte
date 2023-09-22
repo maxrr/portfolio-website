@@ -2,10 +2,15 @@
 	import { LightSwitch, popup } from '@skeletonlabs/skeleton';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { Project } from '$lib/server/loadProjects';
+	import type { PageData } from './$types';
+	// export let data: { projects: Promise<Project[]>, streamed:  };
+
+	// I should be able (and would really like) to use the generated types, but they're just being too squirrely
+	// export let data: PageData;
 	export let data: { projects: Project[] };
 </script>
 
-<div class="absolute top-4 right-4"><LightSwitch /></div>
+<div class="absolute float-right top-4 right-4"><LightSwitch /></div>
 
 <!-- 
 	TODO: Figure out why I HAVE to specify h-auto min-h-full...
@@ -13,13 +18,13 @@
 	instead of the height set by min-height. Very strange.
 -->
 <!-- <div class="h-auto min-h-screen m-auto flex items-center py-24"> -->
-<div class="m-auto min-h-screen flex items-center py-24">
+<div class="m-auto min-h-screen flex items-center py-24 pb-8 md:pb-24">
 	<div
-		class="container mx-auto flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 xl:w-3/4 max-w-6xl gap-24 shrink-0"
+		class="container mx-auto flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 xl:w-3/4 max-w-6xl gap-12 md:gap-24 shrink-0"
 	>
 		<!-- Left panel - name, subtitle, links -->
 		<div class="flex flex-col gap-4 justify-center items-center lg:items-start">
-			<h1 class="h1 text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left">
+			<h1 class="h1 text-6xl sm:text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left">
 				Max<br />
 				<span class="underline underline-offset-[30px]">Rountree</span>
 			</h1>
@@ -104,11 +109,15 @@
 				{:then projects}
 					
 				{/await} -->
-				{#each data.projects as project}
-					{#if project.featured}
-						<ProjectCard {project} />
-					{/if}
-				{/each}
+				{#await data.projects}
+					<p>Loading...</p>
+				{:then projects}
+					{#each projects as project}
+						{#if project.featured}
+							<ProjectCard {project} />
+						{/if}
+					{/each}
+				{/await}
 				<!-- <div class="card p-0 dark:variant-glass-surface">
 					<img
 						src="https://getwallpapers.com/wallpaper/full/2/e/a/1275454-super-cool-backgrounds-1920x1080-large-resolution.jpg"

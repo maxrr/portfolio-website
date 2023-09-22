@@ -6,16 +6,17 @@
 	// Stores
 	import { LightSwitch, getModalStore } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
+	import { local_img_match } from '$lib/util/localUrlResolver';
+	import type { Project } from '$lib/server/loadProjects';
 
 	// @ts-ignore
+	// Typescript does not and will probably never type this correctly :(
 	let project: Project = $modalStore[0]?.valueAttr?.project;
-
-	import { local_img_match } from '$lib/util/localUrlResolver';
 </script>
 
 {#if $modalStore[0] && project}
 	<div
-		class="jacket w-full h-full md:w-3/4 lg:w-1/2 max-w-2xl bg-surface-50-900-token rounded-lg relative"
+		class="jacket w-full h-full md:w-3/4 lg:w-1/2 max-w-2xl dark:bg-surface-800 bg-surface-50 rounded-lg relative"
 	>
 		<button
 			class="absolute top-3 left-3 gap-2 btn bg-surface-50-900-token hover:bg-primary-50-900-token px-2 py-1 rounded-md"
@@ -107,9 +108,5 @@
 		height: auto;
 		@apply max-h-64;
 		object-fit: cover;
-	}
-
-	a {
-		@apply font-bold;
 	}
 </style>

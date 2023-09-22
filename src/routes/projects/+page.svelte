@@ -1,6 +1,11 @@
-<script>
+<script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	export let data;
+	import type { Project } from '$lib/server/loadProjects';
+	import type { PageData } from './$types';
+
+	// Once again...
+	// export let data: PageData;
+	export let data: { projects: Project[] };
 </script>
 
 <!-- <div class="mx-auto w-3/5 h-4/5 flex flex-wrap flex-row p-20 gap-8 justify-center items-center">
@@ -10,7 +15,9 @@
 	{/each}
 </div> -->
 
-<div class="flex flex-col items-center justify-center w-full h-auto min-h-screen p-24">
+<div
+	class="flex flex-col items-center justify-center w-full h-auto min-h-screen py-24 pb-8 md:pb-24"
+>
 	<h1 class="h1 text-center mt-4 mb-6">Projects</h1>
 	<!-- <div
 			class="grid grid-flow-col grid-cols-3 max-w-full md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg overflow-x-scroll gap-5 p-2"

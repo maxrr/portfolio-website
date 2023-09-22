@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { getPageName } from '$lib/util/pageNameResolver';
 
-	let crumbs = [];
+	let crumbs: string[] = [];
 
 	let ptr = 0;
 	let i = 0;
@@ -31,7 +31,13 @@
 	<div class="flex w-full h-16 items-center p-6">
 		<a href="/"><h1 class="mb-1 text-3xl text-token big-header relative">rountree.me</h1></a>
 
-		<ol class="breadcrumb ml-4">
+		<ol
+			class="breadcrumb ml-4 max-[420px]:absolute max-[420px]:top-[3.75rem] max-[420px]:left-4 h-0 w-0 overflow-visible"
+		>
+			{#each crumbs as crumb}
+				<li class="crumb-separator" aria-hidden>/</li>
+				<li class="crumb">{crumb}</li>
+			{/each}
 			<!-- <li class="crumb"><a class="anchor" href="/elements/breadcrumbs">Home</a></li>
 			<li class="crumb-separator" aria-hidden>/</li>
 			<li class="crumb">
