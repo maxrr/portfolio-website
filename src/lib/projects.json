@@ -10,7 +10,7 @@
                 "CSS",
                 "Node.js"
             ],
-            "description": "This website has been a great jump into web design for me. Never before have I made a site from scratch and deployed it, so this was certainly a learning experience.",
+            "description": "This website has been a great jump into web design for me. Never before have I made a website entirely from scratch that didn't look like it was made in MS Paint. This experience has given me a much better perspective on the web development and design process, and has re-familiarized me with HTML and CSS.\n\nThis site has also been my first experience using SvelteKit - it makes everything seem so effortless compared to my experiences in the past. SvelteKit's easy routing and layout system combined with <a href=\"https://tailwindcss.com/\">Tailwind</a> and Skeleton has made designing and creating this website so much less of a chore, and actually something that I've enjoyed.\n\nThis site will also be my first experience using Vercel to deploy any kind of app online.\n\nI'm excited to experiment and add more features to this site and watch it mature - lots of things on my to-do list!",
             "img": {
                 "url": "/site_header.png",
                 "alt": "Rountree.me logo banner"
@@ -46,15 +46,35 @@
         {
             "title": "Garry's Mod Addons",
             "id": "gmod-addons",
-            "featured": true,
+            "featured": false,
             "tags": [
                 "Lua",
                 "SQL"
             ],
-            "description": "Over many years I worked to create and maintain custom addons for a server I ran on a game called Garry's Mod. This server began in 2014 and was shut down in 2022. I worked on these addons both solo and with a fellow developer and friend, and spent many late nights debugging really horrible spaghetti code.\n\nThis was a great learning experience for me because before this the most involved experience I had with any kind of programming was hand-holding JavaScript tutorials on codecademy.com. I find it really fun to look back at how it all began with horribly optimized implementations. If I were to do this whole thing again, you can bet I'd do it a lot differently.\n\nVery much looking forward to S&box's full release.",
+            "description": "Over many years I worked to create and maintain custom addons for a server I ran on a game called Garry's Mod. This server began in 2014 and was shut down in 2022. I worked on these addons both solo and with a fellow developer and friend, and spent many late nights debugging really horrible spaghetti code.\n\nI learned a whole bunch through these addons. Before this, the most advanced programming I had done were some JavaScript tutorials on codecademy.com. I find it really fun to look back at how it all began with horribly optimized implementations. If I were to do this whole thing again, you can bet I'd do it a lot differently.\n\nVery much looking forward to S&box's full release.",
             "img": {
                 "url": "https://files.facepunch.com/lewis/1b1511b1/gmod-meta.jpg",
                 "alt": "Garry's mod logo banner"
+            },
+            "links": [
+                {
+                    "site": "github",
+                    "url": "https://github.com/maxrr/hazard-addons",
+                    "text": "View on Github"
+                }
+            ]
+        },
+        {
+            "title": "Todo",
+            "id": "meta-todo",
+            "featured": true,
+            "tags": [
+                "Meta"
+            ],
+            "description": "(DONE) Begin lazy loading images: https://web.dev/browser-level-image-lazy-loading/\n\nOptimize images (convert to webp?)\n\n(DONE) uMove image preview in ProjectCard component to img element instead of background of div\n\nFix breadcrumbs now that we have a page title resolver\n\nIntroduce markdown support\n\nAdd sorting or filtering to All Projects page\n\nMake an animation happen on homepage on page load: https://stackoverflow.com/questions/6805482/css3-transition-animation-on-load\n\n(DONE) Implement hyphens on ProjectCard components: https://tailwindcss.com/docs/hyphens\n\nAdd 'back' button to Projects page for mobile users, or make it clearer that clicking the url at the top will bring you home\n\nDouble-check auto page name implementation\n\nFigure out Vercel",
+            "img": {
+                "url": "https://i.pinimg.com/736x/86/10/60/86106086e9594672ad7408913b5a3a24.jpg",
+                "alt": "Really funny looking dude"
             },
             "links": [
                 {

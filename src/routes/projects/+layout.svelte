@@ -1,12 +1,30 @@
-<script>
+<script lang="ts">
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
+	import { getPageName } from '$lib/util/pageNameResolver';
 
 	let crumbs = [];
 
-	for (let jump of $page.url.pathname.split('/')) {
-		console.log(jump);
+	let ptr = 0;
+	let i = 0;
+
+	function addCrumb(ptrLocal: number) {
+		let thisJump = getPageName($page.url.pathname.slice(0, ptrLocal));
+		console.log(thisJump, $page.url.pathname, ptrLocal);
+		crumbs.push(thisJump);
+		ptrLocal = $page.url.pathname.indexOf('/', ptrLocal + 1);
 	}
+
+	while ((ptr = $page.url.pathname.indexOf('/', ptr + 1)) != -1) {
+		i++;
+		if (i > 7) break;
+
+		addCrumb(ptr);
+	}
+	addCrumb($page.url.pathname.length);
+	// for (let jump of $page.url.pathname.split('/')) {
+	// 	console.log(jump);
+	// }
 </script>
 
 <div class="flex flex-col w-full h-full min-h-inherit absolute top-0 left-0">
@@ -14,14 +32,15 @@
 		<a href="/"><h1 class="mb-1 text-3xl text-token big-header relative">rountree.me</h1></a>
 
 		<ol class="breadcrumb ml-4">
-			<!-- <li class="crumb"><a class="anchor" href="/elements/breadcrumbs">Home</a></li> -->
+			<!-- <li class="crumb"><a class="anchor" href="/elements/breadcrumbs">Home</a></li>
 			<li class="crumb-separator" aria-hidden>/</li>
 			<li class="crumb">
 				Projects
-				<!-- <a class="underline hover:brightness-75" href="/elements/breadcrumbs">Projects</a> -->
+				<a class="underline hover:brightness-75" href="/elements/breadcrumbs">Projects</a>
 			</li>
 			<li class="crumb-separator" aria-hidden>/</li>
-			<li>Article</li>
+			<li>Article</li> -->
+			<!-- {#each } -->
 		</ol>
 
 		<div class="absolute top-4 right-4"><LightSwitch /></div>

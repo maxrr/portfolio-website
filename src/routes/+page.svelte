@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { LightSwitch, popup } from '@skeletonlabs/skeleton';
-	import type { PageData } from './$types';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-
-	export let data: PageData;
+	import type { Project } from '$lib/server/loadProjects';
+	export let data: { projects: Project[] };
 </script>
 
 <div class="absolute top-4 right-4"><LightSwitch /></div>
@@ -96,7 +95,7 @@
     </h2> -->
 			<h2 class="h2 mb-4 basis-full">Featured Projects</h2>
 			<div
-				class="scroll-smooth scroll-px-4 flex flex-row flex-wrap lg:flex-nowrap lg:flex-row items-center justify-center lg:justify-start gap-4 p-2 overflow-x-auto basis-full lg:basis-auto"
+				class="scroll-smooth scroll-px-4 flex flex-row flex-wrap lg:flex-nowrap lg:flex-row items-center justify-center lg:justify-start gap-4 p-2 pb-3 overflow-x-auto basis-full lg:basis-auto"
 			>
 				<!-- Use snap-mandatory and snap-x -->
 

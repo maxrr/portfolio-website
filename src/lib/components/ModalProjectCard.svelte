@@ -41,13 +41,17 @@
 			Back</button
 		>
 		<div class="sweater w-full h-full">
-			<div class="absolute top-4 right-4"><LightSwitch /></div>
+			<!-- <div class="absolute top-4 right-4"><LightSwitch /></div> -->
 			<div class="flex flex-col w-full h-full">
 				{#if project.img && project.img.url && project.img.alt}
-					<img src={local_img_match[project.img.url] ?? project.img.url} alt={project.img.alt} />
+					<img
+						src={local_img_match[project.img.url] ?? project.img.url}
+						alt={project.img.alt}
+						loading="lazy"
+					/>
 				{/if}
 				<div
-					class="content flex flex-col p-8 pt-5 gap-2 dark:border-primary-900 dark:border-2 rounded-lg rounded-t-none dark:border-t-0"
+					class="content flex flex-col p-8 pt-5 gap-2 dark:border-primary-900-disabled dark:border-2-disabled rounded-lg rounded-t-none dark:border-t-0-disabled"
 				>
 					<h1 class="h1">{project.title}</h1>
 					{#if project.tags}
@@ -60,7 +64,7 @@
 							{/each}
 						</div>
 					{/if}
-					<p class="mt-2">{@html project.description.replaceAll('\n', '<br />')}</p>
+					<p class="mt-2 description">{@html project.description.replaceAll('\n', '<br />')}</p>
 					<div class="flex flex-col gap-2 mt-2">
 						{#if project.links}
 							{#each project.links as link}
@@ -103,5 +107,9 @@
 		height: auto;
 		@apply max-h-64;
 		object-fit: cover;
+	}
+
+	a {
+		@apply font-bold;
 	}
 </style>

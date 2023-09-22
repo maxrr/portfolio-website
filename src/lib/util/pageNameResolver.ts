@@ -15,8 +15,13 @@ export function getPageName(url: string): string {
         title = givens[url];
     else {
         // Otherwise, just take our best guess
-        let inferredTitle = url.substring(url.lastIndexOf('/') + 1).toLocaleLowerCase();
+        let inferredTitle = url.slice(url.lastIndexOf('/') + 1).toLocaleLowerCase();
         title = inferredTitle.charAt(0).toLocaleUpperCase() + inferredTitle.slice(1);
+
+        console.log(url);
+
+        // Cache it for future reference
+        givens[url] = title;
     }
 
     // return 'rountree.me • ' + title;
