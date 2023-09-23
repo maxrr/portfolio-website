@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { local_img_match } from '$lib/util/localUrlResolver';
+	// Initialize modal stores because we need to interact with it
 	import { getModalStore } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
 
+	// Get our helper functions and types ready
+	import { local_img_match } from '$lib/util/localUrlResolver';
 	export let project: import('$lib/server/loadProjects').Project;
 </script>
 
@@ -23,11 +25,6 @@
 		class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative"
 	>
 		{#if project.img && project.img.url && project.img.alt}
-			<!-- <div
-				class="h-24 w-full bg-transparent project-image"
-				style={`background-image: url(${local_img_match[project.img.url] ?? project.img.url})`}
-				aria-label={`Image of ${project.img.alt}`}
-			/> -->
 			<img
 				src={local_img_match[project.img.url] ?? project.img.url}
 				alt={project.img.alt}
@@ -75,6 +72,7 @@
 			</div>
 		</div>
 
+		<!-- Uncomment to re-enable 'open' button instead of having the whole card be the open button -->
 		<!-- {#if project.id} -->
 		<!-- <button
 			on:click={() => {
@@ -168,11 +166,6 @@
 		-webkit-perspective: 1000;
 	}
 
-	/* .projects .card img {
-		@apply max-h-24;
-		@apply bg-cover;
-	} */
-
 	.project-image {
 		@apply bg-cover;
 		@apply bg-center;
@@ -185,8 +178,4 @@
 		@apply overflow-clip;
 		/* @apply h-56; */
 	}
-
-	/* .card:hover {
-		@apply variant-ringed-tertiary;
-	} */
 </style>

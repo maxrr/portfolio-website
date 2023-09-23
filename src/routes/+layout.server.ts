@@ -4,6 +4,7 @@ import { error } from '@sveltejs/kit';
 import { GITHUB_API_TOKEN } from "$env/static/private";
 import type { LayoutServerLoad } from "./$types";
 
+// For some reason, I am able to use the LayoutServerLoad type here... very confusing!
 // export async function load(): Promise<{ projects: Project[], streamed: { githubLastUpdated: Promise<Response> } }> {
 export async function load(): Promise<LayoutServerLoad> {
     let projects: Project[];
@@ -17,8 +18,7 @@ export async function load(): Promise<LayoutServerLoad> {
         throw error(500, "Error when loading project data");
     }
 
-    // let githubLastUpdated = fetch("https://jsonplaceholder.typicode.com/todos/1");
-    let githubLastUpdated = fetch("https://api.github.com/maxrr/hazard-addons", {
+    let githubLastUpdated = fetch("https://api.github.com/repos/maxrr/portfolio-website/commits/main", {
         headers: {
             "Authorization": "Bearer " + GITHUB_API_TOKEN,
             "Accept": "application/vnd.github+json",
@@ -31,10 +31,17 @@ export async function load(): Promise<LayoutServerLoad> {
         // @ts-ignore
         // Again, typescript really hates me
         projects: projects,
+        test: "val",
         streamed: {
-            githubLastUpdated: new Promise(async resolve => {
+            githubLastUpdated: new Promise(async (resolve, reject) => {
                 let glu = await githubLastUpdated;
-                resolve((glu).json())
+                try {
+                    resolve((glu).json())
+                } catch (err) {
+                    console.error("Error when loading GitHub commits");
+                    console.error(err);
+                    reject("ERROR");
+                }
             }),
         }
     };
