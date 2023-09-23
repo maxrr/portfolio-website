@@ -1,11 +1,10 @@
 <!-- https://github.com/skeletonlabs/skeleton/blob/master/sites/skeleton.dev/src/lib/modals/examples/ModalExampleForm.svelte -->
 <script lang="ts">
-	/** Exposes parent props to this component. */
-	// export let parent: any;
-
-	// Stores
-	import { LightSwitch, getModalStore } from '@skeletonlabs/skeleton';
+	// Initialize modal stores because we need to interact with it
+	import { getModalStore } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
+
+	// Get our helper functions and our types ready for action
 	import { local_img_match } from '$lib/util/localUrlResolver';
 	import type { Project } from '$lib/server/loadProjects';
 
@@ -42,6 +41,7 @@
 			Back</button
 		>
 		<div class="sweater w-full h-full">
+			<!-- Uncomment below to re-add theme switcher -->
 			<!-- <div class="absolute top-4 right-4"><LightSwitch /></div> -->
 			<div class="flex flex-col w-full h-full">
 				{#if project.img && project.img.url && project.img.alt}

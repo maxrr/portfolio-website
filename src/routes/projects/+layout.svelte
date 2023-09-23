@@ -10,7 +10,6 @@
 
 	function addCrumb(ptrLocal: number) {
 		let thisJump = getPageName($page.url.pathname.slice(0, ptrLocal));
-		console.log(thisJump, $page.url.pathname, ptrLocal);
 		crumbs.push(thisJump);
 		ptrLocal = $page.url.pathname.indexOf('/', ptrLocal + 1);
 	}
@@ -22,9 +21,6 @@
 		addCrumb(ptr);
 	}
 	addCrumb($page.url.pathname.length);
-	// for (let jump of $page.url.pathname.split('/')) {
-	// 	console.log(jump);
-	// }
 </script>
 
 <div class="flex flex-col w-full h-full min-h-inherit absolute top-0 left-0">
@@ -38,15 +34,6 @@
 				<li class="crumb-separator" aria-hidden>/</li>
 				<li class="crumb">{crumb}</li>
 			{/each}
-			<!-- <li class="crumb"><a class="anchor" href="/elements/breadcrumbs">Home</a></li>
-			<li class="crumb-separator" aria-hidden>/</li>
-			<li class="crumb">
-				Projects
-				<a class="underline hover:brightness-75" href="/elements/breadcrumbs">Projects</a>
-			</li>
-			<li class="crumb-separator" aria-hidden>/</li>
-			<li>Article</li> -->
-			<!-- {#each } -->
 		</ol>
 
 		<div class="absolute top-4 right-4"><LightSwitch /></div>
@@ -66,19 +53,12 @@
 		@apply w-full;
 		@apply absolute;
 		@apply h-1;
-		/* @apply bg-red-500; */
-		/* @apply bg-primary-900-50-token; */
 		@apply bottom-0;
 		@apply left-0;
 	}
 
 	/* More in app.postcss */
-
 	.big-header:hover::after {
 		transform: scaleX(1);
 	}
-
-	/* .crumb > a {
-		transition: 0.1s all ease;
-	} */
 </style>

@@ -5,40 +5,42 @@
 	import '../app.postcss';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import moment from 'moment';
+	import { storePopup, initializeStores, Modal, popup } from '@skeletonlabs/skeleton';
+	import type { ModalComponent } from '@skeletonlabs/skeleton';
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
-
-	import {
-		storePopup,
-		initializeStores,
-		Modal,
-		getModalStore,
-		popup
-	} from '@skeletonlabs/skeleton';
-	import type { ModalSettings, ModalComponent, ModalStore } from '@skeletonlabs/skeleton';
-	import type { LayoutData } from './$types';
 
 	const modalComponentRegistry: Record<string, ModalComponent> = {
 		modalProjectCard: {
 			ref: ModalProjectCard
-			// props: {},
-			// slot: '<p>Skeleton</p>'
 		}
 	};
 
-	// I should be able to do this, but the auto-generated types just aren't cooperating
+	// I should be able to use the LayoutData type, but the auto-generated types just aren't cooperating
 	// export let data: LayoutData;
-	export let data: { streamed: { githubLastUpdated: Promise<string> } };
+	export let data: { test: string; streamed: { githubLastUpdated: Promise<any> } };
 
-	// console.log(getPageName($page.url.pathname));
+	// Set our page name for home, since 'Home' can't be reasonably inferred from '/'
 	setPageName('/', 'Home');
 
+	// Initialize our Skeleton stores (for modals and such)
 	initializeStores();
 
+	// Find out the last time the repository for this project (maxrr/portfolio-website) was committed to
 	let now = moment();
-	let lastUpdated = moment(new Date(2023, 8, 21, 8, 34, 2));
+	// let lastUpdated = moment(new Date(2023, 8, 21, 8, 34, 2));
+	// let lastUpdated: moment.Moment;
 
-	// Month (second entry) needs to be one less than the actual month
+	async function date(): Promise<moment.Moment> {
+		const commitInfo = await data.streamed.githubLastUpdated;
+		return Promise.resolve(moment(commitInfo?.commit?.author?.date));
+	}
+
+	// Debug stuff
+	// console.log(data.streamed.githubLastUpdated);
+	// data.streamed.githubLastUpdated.then((e) => {
+	// 	console.log(e);
+	// });
 </script>
 
 <svelte:head>
@@ -52,9 +54,9 @@
 <div
 	class="relative h-auto md:h-0 bottom-16 mt-12 md:mt-0 md:bottom-6 p-4 pt-0 md:py-0 right-0 w-full align-middle text-surface-600 flex flex-col md:flex-row items-center justify-center md:justify-between"
 >
-	{#await data.streamed.githubLastUpdated}
-		<p class="mb-1 mt-0 md:m-0 justify-self-start h-0 overflow-visible">Last updated (...)</p>
-	{:then githubLastUpdated}
+	{#await date()}
+		<p class="mb-1 mt-12 md:m-0 justify-self-start">Last updated (...)</p>
+	{:then lastUpdated}
 		<p
 			class="mb-1 mt-12 md:m-0 justify-self-start"
 			use:popup={{
@@ -62,20 +64,19 @@
 				target: 'popupLastModified',
 				placement: 'top'
 			}}
+			title={lastUpdated.from(now)}
 		>
 			Last updated {lastUpdated.from(now)}
 		</p>
-
-		<!-- <p class="mb-1 mt-0 md:m-0 justify-self-start" title={lastUpdated.from(now)}>
-			Last updated {lastUpdated.from(now)}
-		</p> -->
 
 		<div
 			class="card py-1 px-2 variant-glass-primary text-surface-800-100-token"
 			data-popup="popupLastModified"
 		>
-			<p>{lastUpdated.format('M/D/YY h:mma')}</p>
+			<p>{lastUpdated.format('M/D/YY h:mma Z')}</p>
 		</div>
+	{:catch}
+		<p>Error fetching last commit date :(</p>
 	{/await}
 
 	<p class="text-center">
@@ -85,19 +86,6 @@
 		<span class="hidden md:inline-block">Totally overkill.</span>
 	</p>
 </div>
-
-<!-- <div class="w-full h-full min-h-screen relative">
-	<div
-		class="relative h-0 bottom-4 right-0 w-full align-middle text-surface-600 flex items-center justify-center md:justify-end"
-	>
-		<p class="mb-4 mr-4">
-			Made with <a href="https://svelte.dev/" target="_blank"><strong>Svelte</strong></a>,
-			<a href="https://tailwindcss.com/" target="_blank"><strong>Tailwind</strong></a>, and
-			<a href="https://www.skeleton.dev/" target="_blank"><strong>Skeleton</strong></a>.
-			<span class="hidden md:inline-block">Totally overkill.</span>
-		</p>
-	</div>
-</div> -->
 
 <style>
 	p > a {
