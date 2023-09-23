@@ -4,7 +4,6 @@
 	const modalStore = getModalStore();
 
 	// Get our helper functions and types ready
-	import { local_img_match } from '$lib/util/localUrlResolver';
 	export let project: import('$lib/server/loadProjects').Project;
 </script>
 
@@ -25,11 +24,7 @@
 		class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative"
 	>
 		{#if project.img && project.img.url && project.img.alt}
-			<img
-				src={local_img_match[project.img.url] ?? project.img.url}
-				alt={project.img.alt}
-				loading="lazy"
-			/>
+			<img src={project.img.url} alt={project.img.alt} loading="lazy" />
 		{/if}
 		<div class="content p-4 pt-3">
 			<h4 class="text-xl mb-1">{project?.title ?? 'Title'}</h4>

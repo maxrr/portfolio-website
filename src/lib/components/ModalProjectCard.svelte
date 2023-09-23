@@ -5,7 +5,6 @@
 	const modalStore = getModalStore();
 
 	// Get our helper functions and our types ready for action
-	import { local_img_match } from '$lib/util/localUrlResolver';
 	import type { Project } from '$lib/server/loadProjects';
 
 	// @ts-ignore
@@ -45,11 +44,7 @@
 			<!-- <div class="absolute top-4 right-4"><LightSwitch /></div> -->
 			<div class="flex flex-col w-full h-full">
 				{#if project.img && project.img.url && project.img.alt}
-					<img
-						src={local_img_match[project.img.url] ?? project.img.url}
-						alt={project.img.alt}
-						loading="lazy"
-					/>
+					<img src={project.img.url} alt={project.img.alt} loading="lazy" />
 				{/if}
 				<div
 					class="content flex flex-col p-8 pt-5 gap-2 dark:border-primary-900-disabled dark:border-2-disabled rounded-lg rounded-t-none dark:border-t-0-disabled"
