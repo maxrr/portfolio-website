@@ -12,7 +12,7 @@
             ],
             "description": "This website has been a great jump into web design for me. Never before have I made a website entirely from scratch that didn't look like it was made in MS Paint. This experience has given me a much better perspective on the web development and design process, and has re-familiarized me with HTML and CSS.\n\nThis site has also been my first experience using SvelteKit - it makes everything seem so effortless compared to my experiences in the past. SvelteKit's easy routing and layout system combined with <a href=\"https://tailwindcss.com/\">Tailwind</a> and Skeleton has made designing and creating this website so much less of a chore, and actually something that I've enjoyed.\n\nThis site will also be my first experience using Vercel to deploy any kind of app online.\n\nI'm excited to experiment and add more features to this site and watch it mature - lots of things on my to-do list!",
             "img": {
-                "url": "/site_header.png",
+                "url": "/cd/site_header.png",
                 "alt": "Rountree.me logo banner"
             },
             "links": [
@@ -32,7 +32,7 @@
             ],
             "description": "I've made a few Discord Bots for utility, and for fun. One of them makes dad jokes, one of them checks whether a source server is running, and another was for moderation. Only the dad jokes one is public - I should really get around to making the other ones public too.",
             "img": {
-                "url": "/discord_header.png",
+                "url": "/cd/discord_header.png",
                 "alt": "Discord logo banner"
             },
             "links": [
