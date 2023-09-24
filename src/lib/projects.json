@@ -12,7 +12,7 @@
             ],
             "description": "This website has been a great jump into web design for me. Never before have I made a website entirely from scratch that didn't look like it was made in MS Paint. This experience has given me a much better perspective on the web development and design process, and has re-familiarized me with HTML and CSS.\n\nThis site has also been my first experience using SvelteKit - it makes everything seem so effortless compared to my experiences in the past. SvelteKit's easy routing and layout system combined with <a href=\"https://tailwindcss.com/\">Tailwind</a> and Skeleton has made designing and creating this website so much less of a chore, and actually something that I've enjoyed.\n\nThis site will also be my first experience using Vercel to deploy any kind of app online.\n\nI'm excited to experiment and add more features to this site and watch it mature - lots of things on my to-do list!",
             "img": {
-                "url": "/cd/site_header.png",
+                "url": "/cd/site_header.webp",
                 "alt": "Rountree.me logo banner"
             },
             "links": [
@@ -30,9 +30,9 @@
             "tags": [
                 "Node.js"
             ],
-            "description": "I've made a few Discord Bots for utility, and for fun. One of them makes dad jokes, one of them checks whether a source server is running, and another was for moderation. Only the dad jokes one is public - I should really get around to making the other ones public too.",
+            "description": "I've made a few Discord Bots for utility, and for fun. One of them makes dad jokes, one of them checks whether a source server is running, and another was for moderation.\n\nI used the 'discord.js' package to interact with the Discord API, but ran into some roadblocks along the way. One memorable experience with this project is being rate-limited at how often I could query a website for server player information - I was writing a bot that would get server statistics from an external website about its percentile ranking as compared to other servers. To overcome this, I had to cache the data and make sure I waited a good amount of time before querying again.\n\nTying into that, I also had my first experience with web scraping while working on this project. Just like the caching problem, I was trying to get a very specific point of data from a website (that may or may not have had a paid API, but I was cheap...), and naively used the 'node-fetch' package and searched by element IDs. I knew even then that my scraping was very fragile wouldn't work if the site went through any major changes.\n\nAt the moment, only the dad jokes bot one is public. I'll get around to making the other ones public too, I just need to make sure they don't have anything sensitive in them.",
             "img": {
-                "url": "/cd/discord_header.png",
+                "url": "/cd/discord_header.webp",
                 "alt": "Discord logo banner"
             },
             "links": [
@@ -61,25 +61,74 @@
                     "site": "github",
                     "url": "https://github.com/maxrr/hazard-addons",
                     "text": "View on Github"
+                },
+                {
+                    "site": "custom",
+                    "url": "https://hgaming.net",
+                    "text": "Visit server website"
                 }
             ]
         },
         {
-            "title": "Todo",
-            "id": "meta-todo",
-            "featured": true,
+            "title": "CS 300: Programming II",
+            "id": "cs300",
+            "featured": false,
             "tags": [
-                "Meta"
+                "Course",
+                "Java"
             ],
-            "description": "(DONE) Begin lazy loading images: https://web.dev/browser-level-image-lazy-loading/\n\nOptimize images (convert to webp?)\n\n(DONE) uMove image preview in ProjectCard component to img element instead of background of div\n\n(DONE) Fix breadcrumbs now that we have a page title resolver\n\nIntroduce markdown support\n\nAdd sorting or filtering to All Projects page\n\nMake an animation happen on homepage on page load: https://stackoverflow.com/questions/6805482/css3-transition-animation-on-load\n\n(DONE) Implement hyphens on ProjectCard components: https://tailwindcss.com/docs/hyphens\n\nAdd 'back' button to Projects page for mobile users, or make it clearer that clicking the url at the top will bring you home\n\nDouble-check auto page name implementation\n\nFigure out Vercel",
+            "description": "This course was the first Computer Science course that I took in college. It is the second course in the line of CS required courses, so it's nothing special in terms of course content or workload, but it felt more advanced than AP CS. The real meat and potatoes was in 400.\n\nIf you're interested, you can read more details about the projects we were assigned throughout the semester by checking out the linked repository.",
             "img": {
-                "url": "https://i.pinimg.com/736x/86/10/60/86106086e9594672ad7408913b5a3a24.jpg",
-                "alt": "Really funny looking dude"
+                "url": "/cd/programming-2.webp",
+                "alt": "Programming II banner"
             },
             "links": [
                 {
                     "site": "github",
-                    "url": "https://github.com/maxrr/hazard-addons",
+                    "url": "https://github.com/maxrr/cs300",
+                    "text": "View on Github"
+                }
+            ]
+        },
+        {
+            "title": "CS 400: Programming III",
+            "id": "cs400",
+            "featured": false,
+            "tags": [
+                "Course",
+                "Java",
+                "Git"
+            ],
+            "description": "CS 400 was a decent step up from 300. In this course, we covered more intermediate data structures like hash tables, red-black and self-balancing trees, and Dijkstra's algorithm. Still nothing super complex, but we were given more time consuming assignments and projects than in 300.\n\nFor each of these big topics (there were more, but these three were the main course focus), we were assigned a group project. Our groups were of 8 people with two teams of four - a red and a blue team - with each person in each team having a unique role: data wrangler, algorithm engineer, frontend, or backend.\n\nRead more about the projects I worked on in the linked repository!",
+            "img": {
+                "url": "/cd/programming-3.webp",
+                "alt": "Programming III banner"
+            },
+            "links": [
+                {
+                    "site": "github",
+                    "url": "https://github.com/maxrr/cs400",
+                    "text": "View on Github"
+                }
+            ]
+        },
+        {
+            "title": "CS 577: Algorithms",
+            "id": "cs577",
+            "featured": true,
+            "tags": [
+                "Python",
+                "Algorithm Design"
+            ],
+            "description": "Algorithms has a reputation for being one of the hardest mandatory CS courses at my school, and that was my experience. The course instructional staff let us pick from many languages when implementing algorithms as weekly assignments.\n\nI chose Python for its comparatively small amount of boilerplate, and because I wasn't particularly worried about getting the best possible performance.\n\nThe algorithms given to us to implement weren't incredibly complex (the difficulty of the course lied mostly in the exam prep and lengthy homeworks), so what you'll see in the linked repository isn't anything that'll blow your socks off.",
+            "img": {
+                "url": "/cd/algorithms.webp",
+                "alt": "Algorithms banner"
+            },
+            "links": [
+                {
+                    "site": "github",
+                    "url": "https://github.com/maxrr/cs577",
                     "text": "View on Github"
                 }
             ]
