@@ -41,10 +41,14 @@
 	// data.streamed.githubLastUpdated.then((e) => {
 	// 	console.log(e);
 	// });
+
+	// Get our page name
+	let pageTitle = getPageTitle($page.url.pathname);
 </script>
 
 <svelte:head>
-	<title>{getPageTitle($page.url.pathname)}</title>
+	<title>{pageTitle}</title>
+	<meta name="description" content={pageTitle} />
 </svelte:head>
 
 <Modal components={modalComponentRegistry} />
@@ -52,7 +56,7 @@
 <slot />
 
 <div
-	class="relative h-auto md:h-0 bottom-16 mt-12 md:mt-0 md:bottom-6 p-4 pt-0 md:py-0 right-0 w-full align-middle text-surface-600 flex flex-col md:flex-row items-center justify-center md:justify-between"
+	class="relative h-auto md:h-0 bottom-16 mt-12 md:mt-0 md:bottom-6 p-4 pt-0 md:py-0 right-0 w-full align-middle text-surface-600 dark:text-surface-400 flex flex-col md:flex-row items-center justify-center md:justify-between"
 >
 	{#await date()}
 		<p class="mb-1 mt-12 md:m-0 justify-self-start">Last updated (...)</p>
@@ -93,6 +97,6 @@
 		@apply underline;
 	}
 	p > a:hover {
-		@apply text-surface-500;
+		@apply text-surface-600-300-token;
 	}
 </style>

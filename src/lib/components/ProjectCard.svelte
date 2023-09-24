@@ -24,10 +24,10 @@
 		class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative"
 	>
 		{#if project.img && project.img.url && project.img.alt}
-			<img src={project.img.url} alt={project.img.alt} loading="lazy" />
+			<img src={project.img.url} alt={project.img.alt} loading="lazy" height="96" width="288" />
 		{/if}
 		<div class="content p-4 pt-3">
-			<h4 class="text-xl mb-1">{project?.title ?? 'Title'}</h4>
+			<h1 class="text-xl mb-1">{project?.title ?? 'Title'}</h1>
 			{#if project.tags}
 				<div class="flex flex-wrap gap-1 gap-y-1">
 					{#each project.tags as tag}
@@ -107,8 +107,8 @@
 	}
 
 	img {
-		width: auto;
-		@apply h-24;
+		/* width: auto; */
+		/* @apply h-24; */
 		object-fit: cover;
 	}
 
@@ -139,7 +139,7 @@
 		@apply drop-shadow-xl;
 		@apply overflow-hidden;
 		@apply h-80;
-		@apply shrink-0;
+		/* @apply shrink-0; */
 		@apply w-64;
 		@apply flex;
 		@apply flex-col;
@@ -149,6 +149,11 @@
 		backface-visibility: hidden;
 		-webkit-font-smoothing: subpixel-antialiased;
 		/* z-index: 1; */
+	}
+
+	img {
+		height: 96px;
+		width: 288px;
 	}
 
 	.card:hover {
@@ -161,13 +166,13 @@
 		-webkit-perspective: 1000;
 	}
 
-	.project-image {
+	/* .project-image {
 		@apply bg-cover;
 		@apply bg-center;
-	}
+	} */
 
 	.card .content {
-		@apply w-auto;
+		/* @apply w-auto; */
 		@apply max-w-full;
 		@apply h-[10.5rem];
 		@apply overflow-clip;

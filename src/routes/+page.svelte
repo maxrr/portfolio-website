@@ -18,13 +18,18 @@
 	instead of the height set by min-height. Very strange.
 -->
 <!-- <div class="h-auto min-h-screen m-auto flex items-center py-24"> -->
-<div class="m-auto min-h-screen flex items-center py-24 pb-8 md:pb-24">
+<div class="min-h-screen flex items-center justify-center py-24 pb-8 md:pb-24">
+	<!-- <div
+		class="mx-auto flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 xl:w-3/4 max-w-6xl gap-12 md:gap-24"
+	> -->
 	<div
-		class="container mx-auto flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 xl:w-3/4 max-w-6xl gap-12 md:gap-24 shrink-0"
+		class="flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 max-w-6xl gap-12 md:gap-24"
 	>
 		<!-- Left panel - name, subtitle, links -->
 		<div class="flex flex-col gap-4 justify-center items-center lg:items-start">
-			<h1 class="h1 text-6xl sm:text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left">
+			<h1
+				class="font-heading-token text-6xl sm:text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left"
+			>
 				Max<br />
 				<span class="underline underline-offset-[30px]">Rountree</span>
 			</h1>
@@ -41,6 +46,7 @@
 						target: 'popupLinkedin',
 						placement: 'top'
 					}}
+					aria-label="Link to my LinkedIn profile"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
 						><path
@@ -61,6 +67,7 @@
 						target: 'popupGithub',
 						placement: 'bottom'
 					}}
+					aria-label="Link to my GitHub profile"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
 						><path
@@ -79,6 +86,7 @@
 						target: 'popupEmail',
 						placement: 'top'
 					}}
+					aria-label="Link to send me an email"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
 						><path
@@ -94,7 +102,7 @@
 
 		<!-- Projects -->
 		<div
-			class="projects flex flex-wrap self-center items-center justify-center lg:self-start float-none lg:float-right text-center lg:text-right lg:mr-0 lg:justify-end overflow-x-clip basis-full"
+			class="projects flex flex-wrap self-center items-center justify-center lg:self-start text-center lg:text-right lg:mr-0 lg:justify-end overflow-x-clip"
 		>
 			<!-- <h2 class="h2 w-full">
       Welcome, you're the {numVisitor + numVisitorEnding} visitor!

@@ -16,3 +16,4 @@
 - [ ] Make an animation happen on homepage on page load: <https://stackoverflow.com/questions/6805482/css3-transition-animation-on-load>
 - [ ] Figure out Vercel deployment
 - [ ] Add markdown support for projects (maybe)
+- [ ] Figure out why elements shift so much on first page load
