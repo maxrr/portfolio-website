@@ -29,7 +29,8 @@
 				<span class="underline underline-offset-[30px]">Rountree</span>
 			</h1>
 
-			<p class="h2 font-normal pt-7 pb-2">I like to make things.</p>
+			<!-- <p class="h2 font-normal pt-7 pb-2">I like to make things.</p> -->
+			<p class="h2 font-normal pt-7 pb-0" />
 			<div class="flex gap-4 w-auto float-left">
 				<a
 					href="https://www.linkedin.com/in/maxrountree/"

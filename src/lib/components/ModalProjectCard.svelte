@@ -17,7 +17,7 @@
 		class="jacket w-full h-full md:w-3/4 lg:w-1/2 max-w-2xl dark:bg-surface-800 bg-surface-50 rounded-lg relative"
 	>
 		<button
-			class="absolute top-3 left-3 gap-2 btn bg-surface-50-900-token hover:bg-primary-50-900-token px-2 py-1 rounded-md"
+			class="absolute top-3 left-3 gap-2 btn bg-surface-100-800-token hover:bg-tertiary-100-800-token px-2 py-1 rounded-md"
 			on:click={() => {
 				modalStore.close();
 			}}

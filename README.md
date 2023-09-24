@@ -1,6 +1,6 @@
 # My Portfolio Website
 
-Welcome to my portfolio website! I've used many tools for the first time while making this:
+Welcome to my portfolio website! I've used a handful of tools for the first time while making this:
 
 - [SvelteKit](kit.svelte.dev)
 - [Vite](https://vitejs.dev/)
