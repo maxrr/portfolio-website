@@ -8,6 +8,11 @@
 	export let data: { projects: Project[] };
 </script>
 
+<svelte:head>
+	<title>Projects • rountree.me</title>
+	<meta name="description" content="List of all projects" />
+</svelte:head>
+
 <div
 	class="flex flex-col items-center justify-center w-full h-auto min-h-screen py-24 pb-8 md:pb-24"
 >

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ModalProjectCard from '$lib/components/ModalProjectCard.svelte';
-	import { getPageTitle, setPageName } from '$lib/util/pageNameResolver';
-	import { page } from '$app/stores';
+	// import { getPageTitle, setPageName } from '$lib/util/pageNameResolver';
+	// import { page } from '$app/stores';
 	import '../app.postcss';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import moment from 'moment';
@@ -21,7 +21,7 @@
 	export let data: { test: string; streamed: { githubLastUpdated: Promise<any> } };
 
 	// Set our page name for home, since 'Home' can't be reasonably inferred from '/'
-	setPageName('/', 'Home');
+	// setPageName('/', 'Home');
 
 	// Initialize our Skeleton stores (for modals and such)
 	initializeStores();
@@ -32,7 +32,6 @@
 	// let lastUpdated: moment.Moment;
 
 	async function date(): Promise<moment.Moment> {
-		return Promise.reject("No reason, just for laughs.");
 		const commitInfo = await data.streamed.githubLastUpdated;
 		return Promise.resolve(moment(commitInfo?.commit?.author?.date));
 	}
@@ -44,14 +43,14 @@
 	// });
 
 	// Get our page name
-	let pageTitle: string;
-	$: pageTitle = getPageTitle($page.url.pathname);
+	// let pageTitle: string;
+	// $: pageTitle = getPageTitle($page.url.pathname);
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
 	<title>{pageTitle}</title>
 	<meta name="description" content={pageTitle} />
-</svelte:head>
+</svelte:head> -->
 
 <Modal components={modalComponentRegistry} />
 

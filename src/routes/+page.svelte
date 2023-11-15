@@ -10,6 +10,11 @@
 	export let data: { projects: Project[] };
 </script>
 
+<svelte:head>
+	<title>Home • rountree.me</title>
+	<meta name="description" content="Homepage of rountree.me, Max Rountree's portfolio website" />
+</svelte:head>
+
 <div class="absolute float-right top-4 right-4"><LightSwitch /></div>
 
 <!-- 
