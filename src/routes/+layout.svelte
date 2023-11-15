@@ -32,6 +32,7 @@
 	// let lastUpdated: moment.Moment;
 
 	async function date(): Promise<moment.Moment> {
+		return Promise.reject("No reason, just for laughs.");
 		const commitInfo = await data.streamed.githubLastUpdated;
 		return Promise.resolve(moment(commitInfo?.commit?.author?.date));
 	}
@@ -43,7 +44,8 @@
 	// });
 
 	// Get our page name
-	let pageTitle = getPageTitle($page.url.pathname);
+	let pageTitle: string;
+	$: pageTitle = getPageTitle($page.url.pathname);
 </script>
 
 <svelte:head>
@@ -80,7 +82,7 @@
 			<p>{lastUpdated.format('M/D/YY h:mma Z')}</p>
 		</div>
 	{:catch}
-		<p>Error fetching last commit date :(</p>
+		<p class="mb-1 mt-12 md:m-0 justify-self-start">Error fetching last commit date :(</p>
 	{/await}
 
 	<p class="text-center">

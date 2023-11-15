@@ -118,15 +118,16 @@
 				{:then projects}
 					
 				{/await} -->
-				{#await data.projects}
-					<p>Loading...</p>
-				{:then projects}
-					{#each projects as project}
+				<!-- {#await data.projects then projects} -->
+					<!-- <p>Loading...</p> -->
+					{#each data.projects as project}
 						{#if project.featured}
+							<!-- <p>{project.title}</p> -->
 							<ProjectCard {project} />
+							<!-- <div class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative h-80 w-64 flex flex-col transition-all"><p>Test</p></div> -->
 						{/if}
 					{/each}
-				{/await}
+				<!-- {/await} -->
 				<!-- <div class="card p-0 dark:variant-glass-surface">
 					<img
 						src="https://getwallpapers.com/wallpaper/full/2/e/a/1275454-super-cool-backgrounds-1920x1080-large-resolution.jpg"
