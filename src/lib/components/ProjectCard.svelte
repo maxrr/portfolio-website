@@ -1,10 +1,12 @@
 <script lang="ts">
 	// Initialize modal stores because we need to interact with it
-	import { getModalStore } from '@skeletonlabs/skeleton';
+	import { getModalStore, modeCurrent } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
+	import type { Project } from "$lib/types";
+	import { tilt } from "$lib/effects";
 
 	// Get our helper functions and types ready
-	export let project: import('$lib/server/loadProjects').Project;
+	export let project: Project;
 </script>
 
 <button
@@ -21,7 +23,7 @@
 	class="jacket"
 >
 	<div
-		class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative"
+		class="card project-card-{project.id} p-0 dark:variant-soft-surface relative !filter-none shadow-md hover:outline-primary-50/900" use:tilt={{ max: 8 }}
 	>
 		{#if project.img && project.img.url && project.img.alt}
 			<img src={project.img.url} alt={project.img.alt} loading="lazy" height="96" width="288" />
@@ -32,7 +34,7 @@
 				<div class="flex flex-wrap gap-1 gap-y-1">
 					{#each project.tags as tag}
 						<span
-							class="badge variant-glass-surface dark:variant-surface rounded-md px-1.5 py-0.5 text-[0.75rem]"
+							class="badge variant-soft-surface dark:variant-ghost-surface rounded-md px-1.5 py-0.5 text-[0.75rem]"
 							>{tag}</span
 						>
 					{/each}
@@ -43,7 +45,7 @@
 					project.img && project.img.url && project.img.alt ? 'line-clamp-4' : 'line-clamp-[8]'
 				}`}
 			>
-				{project?.description ?? 'Description'}
+				{project?.teaser ?? 'Teaser'}
 			</p>
 			<div class="flex flex-col gap-2 mt-2">
 				{#if project.links && project.links.length >= 1}
@@ -116,7 +118,8 @@
 
 	.project-btn {
 		@apply btn;
-		@apply variant-glass-surface;
+		/* @apply variant-glass-surface; */
+		@apply variant-soft-surface;
 		@apply py-1;
 		@apply px-3;
 		@apply rounded-md;
@@ -145,14 +148,19 @@
 		@apply w-64;
 		@apply flex;
 		@apply flex-col;
-		@apply transition-all;
+		transition: all 150ms ease;
+		/* outline: none; */
+		outline-width: 0;
+		outline-style: solid;
+		/* TODO: Make the outline draw behind the card, maybe using ::before? */
+		outline-offset: -2px;
 		min-width: 18rem;
-		transform: translateZ(0rem) scale(1);
+		/* transform: translateZ(0rem) scale(1);
 		backface-visibility: hidden;
 		perspective: 1000;
 		-webkit-backface-visibility: hidden;
 		-webkit-perspective: 1000;
-		-webkit-font-smoothing: subpixel-antialiased;
+		-webkit-font-smoothing: subpixel-antialiased; */
 		/* z-index: 1; */
 	}
 
@@ -163,12 +171,15 @@
 
 	.card:hover {
 		/* transform: translateZ(2rem); */
-		transform: scale(1.04);
-		z-index: 2;
+		/* transform: scale(1.04); */
+		/* z-index: 2; */
+		/* outline: 0.5rem solid white; */
+		outline-width: 0.5rem;
+		/* box-shadow: 0 0 1.5rem white !important; */
 	}
 
 	.jacket {
-		-webkit-perspective: 1000;
+		/* -webkit-perspective: 1000; */
 	}
 
 	/* .project-image {

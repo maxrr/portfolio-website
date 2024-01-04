@@ -1,11 +1,12 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import type { Project } from '$lib/server/loadProjects';
+	import type { Project } from '$lib/types';
 	import type { PageData } from './$types';
 
 	// Once again...
 	// export let data: PageData;
 	export let data: { projects: Project[] };
+	data.projects = data?.projects ?? [];
 </script>
 
 <div
@@ -28,7 +29,7 @@
 		@apply w-full;
 		@apply h-full;
 		@apply justify-center;
-		@apply max-w-7xl;
+		@apply max-w-6xl;
 		grid-template-columns: repeat(auto-fill, 18rem);
 	}
 </style>

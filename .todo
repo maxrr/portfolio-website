@@ -12,8 +12,10 @@
 
 ## Tasks to experiment with later
 
-- [ ] Add sorting or filtering to All Projects page
+- [ ] Add sorting or filtering to projects
 - [ ] Make an animation happen on homepage on page load: <https://stackoverflow.com/questions/6805482/css3-transition-animation-on-load>
 - [ ] Figure out Vercel deployment
-- [ ] Add markdown support for projects (maybe)
-- [ ] Figure out why elements shift so much on first page load
+- [ ] Add markdown support for projects
+- [ ] Add markdown editor for projects
+- [ ] Add experience / resume section
+- [x] Figure out why elements shift so much on first page load

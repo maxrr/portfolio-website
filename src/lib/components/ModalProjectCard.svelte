@@ -5,19 +5,21 @@
 	const modalStore = getModalStore();
 
 	// Get our helper functions and our types ready for action
-	import type { Project } from '$lib/server/loadProjects';
+	import type { Project } from '$lib/types';
 
 	// @ts-ignore
 	// Typescript does not and will probably never type this correctly :(
 	let project: Project = $modalStore[0]?.valueAttr?.project;
 </script>
 
+<!-- TODO: Upgrade to SvelteKit 2.0 and use shallow routing to modify the URL and history when these modals are put on screen -->
+
 {#if $modalStore[0] && project}
 	<div
-		class="jacket w-full h-full md:w-3/4 lg:w-1/2 max-w-2xl dark:bg-surface-800 bg-surface-50 rounded-lg relative"
+		class="jacket w-full h-full md:w-3/4 xl:w-3/5s max-w-3xl dark:bg-surface-800 bg-surface-50 rounded-lg relative"
 	>
 		<button
-			class="absolute top-3 left-3 gap-2 btn bg-surface-100-800-token hover:bg-tertiary-100-800-token px-2 py-1 rounded-md"
+			class="absolute top-3 left-3 gap-2 btn bg-surface-100-800-token hover:bg-primary-100-800-token px-2 py-1 rounded-md"
 			on:click={() => {
 				modalStore.close();
 			}}
@@ -51,16 +53,16 @@
 				>
 					<h1 class="h1">{project.title}</h1>
 					{#if project.tags}
-						<div class="flex flex-wrap gap-1.5 gap-y-1">
+						<div class="flex flex-wrap gap-1.5 gap-y-1 mt-2">
 							{#each project.tags as tag}
 								<span
-									class="badge variant-glass-surface dark:variant-surface rounded-md px-1.5 py-0.5 text-sm"
+									class="badge variant-soft-surface dark:variant-surface rounded-md px-1.5 py-0.5 text-sm"
 									>{tag}</span
 								>
 							{/each}
 						</div>
 					{/if}
-					<p class="mt-2 description">{@html project.description.replaceAll('\n', '<br />')}</p>
+					<p class="mt-2 description">{@html project.teaser.replaceAll('\n', '<br />')}</p>
 					<div class="flex flex-col gap-2 mt-2">
 						{#if project.links}
 							{#each project.links as link}

@@ -5,7 +5,7 @@
 	import '../app.postcss';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import moment from 'moment';
-	import { storePopup, initializeStores, Modal, popup } from '@skeletonlabs/skeleton';
+	import { storePopup, initializeStores, Modal, popup, LightSwitch } from '@skeletonlabs/skeleton';
 	import type { ModalComponent } from '@skeletonlabs/skeleton';
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
@@ -53,16 +53,18 @@
 
 <Modal components={modalComponentRegistry} />
 
+<div class="absolute float-right top-4 right-4"><LightSwitch /></div>
+
 <slot />
 
 <div
-	class="relative h-auto md:h-0 bottom-16 mt-12 md:mt-0 md:bottom-6 p-4 pt-0 md:py-0 right-0 w-full align-middle text-surface-600 dark:text-surface-400 flex flex-col md:flex-row items-center justify-center md:justify-between"
+	class="relative h-auto lg:h-0 bottom-16 mt-12 md:mt-0 lg:bottom-6 p-4 pt-0 lg:py-0 right-0 w-full align-middle text-primary-900 dark:text-surface-400 flex flex-col lg:flex-row items-center justify-center lg:justify-between"
 >
 	{#await date()}
-		<p class="mb-1 mt-12 md:m-0 justify-self-start">Last updated (...)</p>
+		<p class="mb-1 mt-12 lg:m-0 justify-self-start">Last updated (...)</p>
 	{:then lastUpdated}
 		<p
-			class="mb-1 mt-12 md:m-0 justify-self-start"
+			class="mb-1 mt-12 lg:m-0 justify-self-start"
 			use:popup={{
 				event: 'hover',
 				target: 'popupLastModified',
@@ -74,7 +76,7 @@
 		</p>
 
 		<div
-			class="card py-1 px-2 variant-glass-primary text-surface-800-100-token"
+			class="card py-1 px-2 variant-soft-primary text-surface-800-100-token"
 			data-popup="popupLastModified"
 		>
 			<p>{lastUpdated.format('M/D/YY h:mma Z')}</p>
@@ -86,8 +88,9 @@
 	<p class="text-center">
 		Made with <a href="https://kit.svelte.dev/" target="_blank"><strong>SvelteKit</strong></a>,
 		<a href="https://tailwindcss.com/" target="_blank"><strong>Tailwind</strong></a>, and
-		<a href="https://www.skeleton.dev/" target="_blank"><strong>Skeleton</strong></a>.
-		<span class="hidden md:inline-block">Totally overkill.</span>
+		<a href="https://www.skeleton.dev/" target="_blank"><strong>Skeleton<strong /></strong></a>.
+		Powered by <a href="https://vercel.com" target="_blank"><strong>Vercel</strong></a>.
+		<!-- <span class="hidden lg:inline-block">Totally overkill.</span> -->
 	</p>
 </div>
 
