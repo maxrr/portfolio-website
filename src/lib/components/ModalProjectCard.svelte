@@ -1,16 +1,42 @@
 <!-- https://github.com/skeletonlabs/skeleton/blob/master/sites/skeleton.dev/src/lib/modals/examples/ModalExampleForm.svelte -->
 <script lang="ts">
 	// Initialize modal stores because we need to interact with it
-	import { getModalStore } from '@skeletonlabs/skeleton';
+	import { ProgressRadial, getModalStore } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
 
 	// Get our helper functions and our types ready for action
 	import type { Project } from '$lib/types';
+	import { error } from '@sveltejs/kit';
+	import { getProject } from '$lib/util/loadProjects';
+	import Error from "../../routes/+error.svelte";
 
 	// @ts-ignore
 	// Typescript does not and will probably never type this correctly :(
 	let project: Project = $modalStore[0]?.valueAttr?.project;
+
+	let renderedMarkdown = '';
+	let fetchCompleted = false;
+	async function getProjectContent() {
+		try {
+			const res = await fetch(`/api/projects/${project.id}`);
+			const ret = await res.json();
+			console.log(ret);
+			renderedMarkdown = ret.content.html;
+			fetchCompleted = true;
+			// throw "test"; // Uncomment to test error display.
+		} catch (err) {
+			renderedMarkdown =
+				'<div class="alert variant-filled-error">An error occured while fetching project details. Please refresh the page or try again later.</div>';
+		}
+	}
+
+	// setTimeout(getProjectContent, 200);
+	getProjectContent();
 </script>
+
+<svelte:head>
+	<link href="/cd/styles/prism-cb.css" rel="stylesheet" />
+</svelte:head>
 
 <!-- TODO: Upgrade to SvelteKit 2.0 and use shallow routing to modify the URL and history when these modals are put on screen -->
 
@@ -97,6 +123,19 @@
 								</a>
 							{/each}
 						{/if}
+						{#if !fetchCompleted}
+						<hr class="my-4" />
+						<div class="w-full flex justify-center">
+							<ProgressRadial stroke={150} width={'w-8'} />
+						</div>
+						{:else if renderedMarkdown.length > 0}
+						<hr class="my-4" />
+						<div class="markdown-content -mt-1 flex flex-col gap-3">
+							{@html renderedMarkdown}
+							<!-- FIXME: Figure out how to style elements here -->
+							<!-- <svelte:element this={renderedMarkdown} /> -->
+						</div>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -112,6 +151,10 @@
 	path {
 		@apply fill-token;
 	}
+
+	/* .markdown-content > ol {
+		list-style-type: decimal !important;
+	} */
 
 	img {
 		width: auto;

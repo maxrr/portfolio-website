@@ -7,23 +7,32 @@
 
 	// Get our helper functions and types ready
 	export let project: Project;
+
+	function openModal() {
+		new Promise<boolean>((res) => {
+			document.body.classList.add("body-stop-scroll", window.innerWidth != document.body.clientWidth ? "body-stop-scroll-bar-adjustment" : "fake-class");
+
+			modalStore.trigger({
+				type: 'component',
+				component: 'modalProjectCard',
+				valueAttr: { project: project },
+				response: (r: boolean) => {
+					res(r);
+				},
+			});
+		}).then((r: any) => {
+			console.log("Received response");
+			document.body.classList.remove("body-stop-scroll", "body-stop-scroll-bar-adjustment");
+		});
+	}
 </script>
 
 <button
-	on:click={() => {
-		const modal = {
-			type: 'component',
-			component: 'modalProjectCard',
-			valueAttr: { project: project }
-		};
-		// @ts-ignore
-		// This error won't go away because of some wacky typescript shenanigans... not going to spend too much time on it
-		modalStore.trigger(modal);
-	}}
+	on:click={openModal}
 	class="jacket"
 >
 	<div
-		class="card project-card-{project.id} p-0 dark:variant-soft-surface relative !filter-none shadow-md hover:outline-primary-50/900" use:tilt={{ max: 8 }}
+		class="card project-card-{project.id} p-0 dark:variant-soft-surface relative !filter-none shadow-md hover:outline-primary-50/900" use:tilt={{ max: 15, perspective: 800 }}
 	>
 		{#if project.img && project.img.url && project.img.alt}
 			<img src={project.img.url} alt={project.img.alt} loading="lazy" height="96" width="288" />
@@ -115,7 +124,7 @@
 		/* @apply h-24; */
 		object-fit: cover;
 	}
-
+	
 	.project-btn {
 		@apply btn;
 		/* @apply variant-glass-surface; */
@@ -153,7 +162,7 @@
 		outline-width: 0;
 		outline-style: solid;
 		/* TODO: Make the outline draw behind the card, maybe using ::before? */
-		outline-offset: -2px;
+		/* outline-offset: -2px; */
 		min-width: 18rem;
 		/* transform: translateZ(0rem) scale(1);
 		backface-visibility: hidden;

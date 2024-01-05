@@ -58,10 +58,10 @@
 <slot />
 
 <div
-	class="relative h-auto lg:h-0 bottom-16 mt-12 md:mt-0 lg:bottom-6 p-4 pt-0 lg:py-0 right-0 w-full align-middle text-primary-900 dark:text-surface-400 flex flex-col lg:flex-row items-center justify-center lg:justify-between"
+	class="relative h-auto lg:h-0 bottom-16 mt-2 md:mt-0 lg:bottom-6 p-4 pt-0 lg:py-0 right-0 w-full align-middle text-primary-900 dark:text-surface-400 flex flex-col lg:flex-row items-center justify-center lg:justify-between"
 >
 	{#await date()}
-		<p class="mb-1 mt-12 lg:m-0 justify-self-start">Last updated (...)</p>
+		<p class="mb-1 mt-12 lg:m-0 justify-self-start">Last updated...</p>
 	{:then lastUpdated}
 		<p
 			class="mb-1 mt-12 lg:m-0 justify-self-start"
@@ -76,7 +76,7 @@
 		</p>
 
 		<div
-			class="card py-1 px-2 variant-soft-primary text-surface-800-100-token"
+			class="card py-1 px-2 variant-solid-surface text-surface-800-100-token"
 			data-popup="popupLastModified"
 		>
 			<p>{lastUpdated.format('M/D/YY h:mma Z')}</p>

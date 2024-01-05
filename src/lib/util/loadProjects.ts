@@ -42,11 +42,11 @@ export async function getProject(query: string): Promise<{ content: any, meta: P
     try {
         const project = await import(`../../projects/${query}.md`);
 
-        console.log(project);
-        console.log(project.default.render());
+        // console.log(project);
+        // console.log(project.default.render());
         
         return {
-            content: project.default,
+            content: project.default.render(),
             meta: project.metadata,
         }
     } catch (err) {
