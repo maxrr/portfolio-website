@@ -43,6 +43,7 @@ export async function getProject(query: string): Promise<{ content: any, meta: P
         const project = await import(`../../projects/${query}.md`);
 
         console.log(project);
+        console.log(project.default.render());
         
         return {
             content: project.default,

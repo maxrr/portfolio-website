@@ -1,9 +1,8 @@
-import { HttpError_1, error, json } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
 import { getProject, getProjects } from '$lib/util/loadProjects';
-import type { RequestEvent, RouteParams } from './$types';
 
 export async function GET({ params }) {
-	console.log(params.query);
+	// console.log(params.query);
 
     let errorCode = null;
 	try {
@@ -14,6 +13,7 @@ export async function GET({ params }) {
 				return json(await getProjects(false));
 			default:
                 const project = await getProject(params.query);
+                // console.log(project);
                 if (project == null)
                     throw error((errorCode = 404), `Project with id ${params.query} not found.`);
                 return json(project);

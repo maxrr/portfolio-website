@@ -1,10 +1,16 @@
 <script lang="ts">
 	import { popup } from '@skeletonlabs/skeleton';
+	import { createFloatingActions } from "svelte-floating-ui";
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { Project } from '$lib/types';
 	import type { PageData } from "./$types";
 	export let data: PageData;
 	data.projects = data?.projects ?? [];
+
+	const [ floatingClickMoreInfoRef, floatingClickMoreInfoContent ] = createFloatingActions({
+		strategy: "absolute",
+		placement: "left",
+	});
 </script>
 
 <svelte:head>
