@@ -1,10 +1,12 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
+import rehypeExternalLinks from "rehype-external-links";
 
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	extensions: ['.md'],
+	rehypePlugins: [[rehypeExternalLinks, { rel: "nofollow", target: "_blank" }]]
 };
 
 /** @type {import('@sveltejs/kit').Config} */

@@ -11,8 +11,11 @@
 	import Error from "../../routes/+error.svelte";
 
 	// @ts-ignore
-	// Typescript does not and will probably never type this correctly :(
+	// Typescript does not and will probably never type these correctly :(
 	let project: Project = $modalStore[0]?.valueAttr?.project;
+
+	// @ts-ignore
+	const onClose: Function = $modalStore[0]?.valueAttr?.onClose;
 
 	let renderedMarkdown = '';
 	let fetchCompleted = false;
@@ -20,7 +23,7 @@
 		try {
 			const res = await fetch(`/api/projects/${project.id}`);
 			const ret = await res.json();
-			console.log(ret);
+			// console.log(ret);
 			renderedMarkdown = ret.content.html;
 			fetchCompleted = true;
 			// throw "test"; // Uncomment to test error display.
@@ -47,6 +50,7 @@
 		<button
 			class="absolute top-3 left-3 gap-2 btn bg-surface-100-800-token hover:bg-primary-100-800-token px-2 py-1 rounded-md"
 			on:click={() => {
+				onClose();
 				modalStore.close();
 			}}
 		>

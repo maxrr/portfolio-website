@@ -8,6 +8,10 @@
 	// Get our helper functions and types ready
 	export let project: Project;
 
+	function onCloseModal() {
+		document.body.classList.remove("body-stop-scroll", "body-stop-scroll-bar-adjustment");
+	}
+
 	function openModal() {
 		new Promise<boolean>((res) => {
 			document.body.classList.add("body-stop-scroll", window.innerWidth != document.body.clientWidth ? "body-stop-scroll-bar-adjustment" : "fake-class");
@@ -15,14 +19,13 @@
 			modalStore.trigger({
 				type: 'component',
 				component: 'modalProjectCard',
-				valueAttr: { project: project },
+				valueAttr: { project: project, onClose: onCloseModal },
 				response: (r: boolean) => {
 					res(r);
 				},
 			});
 		}).then((r: any) => {
-			console.log("Received response");
-			document.body.classList.remove("body-stop-scroll", "body-stop-scroll-bar-adjustment");
+			onCloseModal();
 		});
 	}
 </script>
