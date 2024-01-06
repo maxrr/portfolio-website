@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ModalProjectCard from '$lib/components/ModalProjectCard.svelte';
-	import { getPageTitle, setPageName } from '$lib/util/pageNameResolver';
-	import { page } from '$app/stores';
+	// import { getPageTitle, setPageName } from '$lib/util/pageNameResolver';
+	// import { page } from '$app/stores';
 	import '../app.postcss';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import moment from 'moment';
@@ -21,7 +21,7 @@
 	export let data: { test: string; streamed: { githubLastUpdated: Promise<any> } };
 
 	// Set our page name for home, since 'Home' can't be reasonably inferred from '/'
-	setPageName('/', 'Home');
+	// setPageName('/', 'Home');
 
 	// Initialize our Skeleton stores (for modals and such)
 	initializeStores();
@@ -43,13 +43,14 @@
 	// });
 
 	// Get our page name
-	let pageTitle = getPageTitle($page.url.pathname);
+	// let pageTitle: string;
+	// $: pageTitle = getPageTitle($page.url.pathname);
 </script>
 
-<svelte:head>
+<!-- <svelte:head>
 	<title>{pageTitle}</title>
 	<meta name="description" content={pageTitle} />
-</svelte:head>
+</svelte:head> -->
 
 <Modal components={modalComponentRegistry} />
 
@@ -81,7 +82,7 @@
 			<p>{lastUpdated.format('M/D/YY h:mma Z')}</p>
 		</div> -->
 	{:catch}
-		<p>Error fetching last commit date :(</p>
+		<p class="mb-1 mt-12 md:m-0 justify-self-start">Error fetching last commit date :(</p>
 	{/await}
 
 	<p class="text-center">

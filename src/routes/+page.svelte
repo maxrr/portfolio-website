@@ -14,6 +14,8 @@
 </script>
 
 <svelte:head>
+	<title>Home • rountree.me</title>
+	<meta name="description" content="Homepage of rountree.me, Max Rountree's portfolio website" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -121,7 +123,9 @@
 				{:then projects}
 					{#each projects as project}
 						{#if project.featured}
+							<!-- <p>{project.title}</p> -->
 							<ProjectCard {project} />
+							<!-- <div class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative h-80 w-64 flex flex-col transition-all"><p>Test</p></div> -->
 						{/if}
 					{/each}
 				{/await}
