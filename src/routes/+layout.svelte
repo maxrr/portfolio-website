@@ -8,6 +8,12 @@
 	import { storePopup, initializeStores, Modal, popup, LightSwitch } from '@skeletonlabs/skeleton';
 	import type { ModalComponent } from '@skeletonlabs/skeleton';
 
+	// https://vercel.com/docs/analytics/quickstart
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+
+	inject({ mode: dev ? 'development' : 'production' })
+
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
 	const modalComponentRegistry: Record<string, ModalComponent> = {
