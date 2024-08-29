@@ -8,7 +8,7 @@ img: {
     url: "https://previews.123rf.com/images/justmeyo/justmeyo1306/justmeyo130600192/20279117-successful-cool-man-with-sunglasses-giving-thumbs-up-isolated-on-white-background.jpg",
     alt: "Cool guy with thumbs up",
 }
-teaser: This is a test project to display all markdown features, and should not be `visible` in production.
+teaser: This is a test project to display all markdown features, and should not be visible in production.
 ---
 
 # This is a h1

@@ -15,8 +15,8 @@ links: [
 teaser: I wanted a quick way of checking who was connected to my game server, and a way to automate my dad jokes.
 ---
 
-I've made a few Discord Bots for utility, and for fun. One of them makes dad jokes, one of them checks whether a source server is running, and another was for user moderation.
+I've made Discord Bots for utility across the years. One of them makes dad jokes, one of them checks whether a [source](https://en.wikipedia.org/wiki/Source_(game_engine)) server is running, and another was for user moderation.
 
-I used [discord.js](https://discord.js.org/) as the base of all of my bots, but ran into some roadblocks along the way, namely that I would get ratelimited when trying to scrape information from a website (that only offered a paid API). I was cheap, and ended up having to only scrape every 30 minutes to an hour, which was good enough for me.
+I used [discord.js](https://discord.js.org/) to create all of these bots. The largest roadblock during these projects was web scraping as I had never had to even consider this before. This materialized when I realized I was being ratelimited when trying to scrape information from a website that tried to push users towards their paid API. I was cheap, and ended up having to only scrape every 30 minutes to an hour, which was good enough for the bot's purposes. This also encouraged me to cache data and was the first time I had done file I/O using Node.js.
 
-At the moment, only the dad jokes bot is public. I'll get around to marking the other repositories public too.
+The linked repository here points to the bot that makes dad jokes.
