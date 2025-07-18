@@ -3,7 +3,7 @@
 import VanillaTilt from "vanilla-tilt";
 
 // @ts-ignore
-export function tilt (node, options) {
+export function tilt(node, options) {
     VanillaTilt.init(node, options)
 
     return {

@@ -1,24 +1,6 @@
-<script lang="ts">
-		import { createFloatingActions } from "svelte-floating-ui";
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import type { Project } from '$lib/types';
-	import type { PageData } from "./$types";
-	interface Props {
-		data: PageData;
-	}
-
-	let { data = $bindable() }: Props = $props();
-	data.projects = data?.projects ?? [];
-
-	const [ floatingClickMoreInfoRef, floatingClickMoreInfoContent ] = createFloatingActions({
-		strategy: "absolute",
-		placement: "left",
-	});
-</script>
-
 <svelte:head>
-	<title>Home • rountree.me</title>
-	<meta name="description" content="Homepage of rountree.me, Max Rountree's portfolio website" />
+	<title>Home • rountr.ee</title>
+	<meta name="description" content="Homepage of rountr.ee, Max Rountree's portfolio website" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -41,12 +23,12 @@
 		<!-- Left panel - name, subtitle, links -->
 		<div class="flex flex-col gap-4 justify-center items-center lg:items-start">
 			<h1
-				class="font-heading-token text-6xl sm:text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left"
+				class="font-extrabold text-6xl sm:text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left"
 			>
 				Max<br />
 				<span class="underline underline-offset-[30px]">Rountree</span>
 			</h1>
-			<p class="h3 mt-8 -mb-8 max-w-md lg:max-w-lg text-center lg:text-left">Welcome to my site! I'm a CS graduate looking for a software engineering role.</p>
+			<p class="h3 mt-8 -mb-8 max-w-md lg:max-w-lg text-center lg:text-left">Welcome to my site! I'm an aspiring software engineer.</p>
 			<!-- <p class="h2 font-normal pt-7 pb-2">I like to make things.</p> -->
 			<p class="h2 font-normal pt-7 pb-0"></p>
 			<div class="flex gap-4 w-auto float-left">
@@ -54,11 +36,6 @@
 					href="https://www.linkedin.com/in/maxrountree/"
 					target="_blank"
 					class="[&>*]:pointer-events-none svglink"
-					use:popup={{
-						event: 'hover',
-						target: 'popupLinkedin',
-						placement: 'top'
-					}}
 					aria-label="Link to my LinkedIn profile"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
@@ -75,11 +52,6 @@
 					href="https://github.com/maxrr"
 					target="_blank"
 					class="[&>*]:pointer-events-none svglink"
-					use:popup={{
-						event: 'hover',
-						target: 'popupGithub',
-						placement: 'top'
-					}}
 					aria-label="Link to my GitHub profile"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
@@ -94,11 +66,6 @@
 				<a
 					href="mailto:max@rountree.me"
 					class="[&>*]:pointer-events-none svglink"
-					use:popup={{
-						event: 'hover',
-						target: 'popupEmail',
-						placement: 'top'
-					}}
 					aria-label="Link to send me an email"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
@@ -112,53 +79,25 @@
 				<p>max@rountree.me</p>
 			</div>
 		</div>
-
-		<!-- Projects -->
-		<div
-			class="projects flex flex-col flex-wrap self-center items-center lg:items-end justify-center lg:self-start text-center lg:text-right lg:mr-0 lg:justify-end min-w-fit"
-		>
-			<h2 class="h2 mb-4 basis-full lg:mr-1">Featured Project</h2>
-			<div
-				class="scroll-smooth scroll-px-4 flex flex-row flex-wrap lg:flex-nowrap lg:flex-row items-center justify-center lg:justify-start gap-4 p-0 pb-3 overflow-visible basis-full lg:basis-auto"
-			>
-				{#await data.projects}
-					<p>Loading...</p>
-				{:then projects}
-					{#each projects as project}
-						{#if project.featured}
-							<!-- <p>{project.title}</p> -->
-							<ProjectCard {project} />
-							<!-- <div class="card project-card-{project.id} p-0 dark:variant-glass-surface shadow-none !drop-shadow-md relative h-80 w-64 flex flex-col transition-all"><p>Test</p></div> -->
-						{/if}
-					{/each}
-				{/await}
-			</div>
-			<a href="/projects">
-				<button
-					class="btn bg-gradient-to-br from-secondary-500 to-tertiary-500 text-white rounded-md mt-2 px-4 py-2"
-					>View all projects</button
-				>
-			</a>
-		</div>
 	</div>
 </div>
 
 <style>
 	h1 {
-		@apply drop-shadow-2xl;
+/* @apply drop-shadow-2xl; */ /* mass-replaced */
 	}
 
 	path {
-		@apply fill-token;
+/* @apply fill-token; */ /* mass-replaced */
 	}
 
 	a > svg > path {
-		@apply transition-all;
+/* @apply transition-all; */ /* mass-replaced */
 		transition: 0.12s all ease;
 	}
 
 	a:hover > svg > path {
-		@apply brightness-50;
+/* @apply brightness-50; */ /* mass-replaced */
 		transform: scale(0.95) translate(2.5%, 2.5%);
 	}
 </style>

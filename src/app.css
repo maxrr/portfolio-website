@@ -1,12 +1,7 @@
 @import "tailwindcss";
-
-@import "@skeletonlabs/skeleton";
-
-@import "@skeletonlabs/skeleton/optional/presets";
-
-@import "@skeletonlabs/skeleton/themes/wintry";
-
-@source "../node_modules/@skeletonlabs/skeleton-svelte/dist";
+@plugin "daisyui" {
+	themes: emerald, dim --default --prefersdark;
+}
 
 @layer utilities {
 	.min-h-inherit {
@@ -19,104 +14,9 @@ html, body {
 	height: 100%;
 }
 
-.markdown-content h1 {
-	/* font-size: 2.25rem;
-	line-height: 2.25rem; */
-	@apply h1;
-}
-
-.markdown-content h2 {
-	/* font-size: 2rem;
-	line-height: 2rem; */
-	@apply h2;
-}
-
-.markdown-content h3 {
-	/* font-size: 1.85rem;
-	line-height: 1.85rem; */
-	@apply h3;
-}
-
-.markdown-content h4 {
-	/* font-size: 1.63rem;
-	line-height: 1.63rem; */
-	@apply h4;
-}
-
-.markdown-content h5 {
-	/* font-size: 1.5rem;
-	line-height: 1.5rem; */
-	@apply h5;
-}
-
-.markdown-content h6 {
-	/* font-size: 1.25rem;
-	line-height: 1.25rem; */
-	@apply h6;
-}
-
-.markdown-content ol {
-	list-style: decimal;
-	@apply ml-2;
-	@apply lg:ml-6;
-}
-
-.markdown-content ul {
-	list-style: disc;
-	@apply ml-2;
-	@apply lg:ml-6;
-}
-
-.markdown-content hr {
-	@apply mb-3;
-	@apply mt-2;
-}
-
-.markdown-content blockquote {
-	@apply bg-surface-200-800;
-	@apply p-3;
-	@apply rounded-lg;
-}
-
-.markdown-content code, .markdown-content pre {
-	@apply bg-surface-50-950;
-}
-
-.markdown-content code:not(pre code) {
-	@apply p-1;
-	@apply rounded-md;
-}
-
-.markdown-content a {
-	@apply relative;
-	@apply font-medium;
-	@apply underline;
-	@apply text-primary-950-50;
-	@apply transition-all;
-	@apply rounded-sm;
-	@apply z-20;
-}
-
-.markdown-content a:hover {
-	/* background-clip: text;
-	-webkit-background-clip: text; */
-	@apply bg-gradient-to-br;
-	@apply from-primary-500 to-tertiary-500;
-	@apply no-underline;
-	@apply text-white;
-	/* @apply px-1; */
-}
-
-.dark .big-header::after {
-	background-color: rgb(var(--theme-font-color-dark)) !important;
-}
-
 .body-stop-scroll {
 	height: 100%;
 	overflow: hidden;
-	/* position: absolute;
-	left: 0;
-	width: calc(100% - 0.5rem); */
 }
 
 .body-stop-scroll-bar-adjustment {
