@@ -1,4 +1,5 @@
 onlyBuiltDependencies:
   - '@sveltejs/kit'
   - esbuild
+  - eslint-config-prettier
   - svelte-preprocess
