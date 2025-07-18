@@ -17,8 +17,8 @@
 	// @ts-ignore
 	const onClose: Function = $modalStore[0]?.valueAttr?.onClose;
 
-	let renderedMarkdown = '';
-	let fetchCompleted = false;
+	let renderedMarkdown = $state('');
+	let fetchCompleted = $state(false);
 	async function getProjectContent() {
 		try {
 			const res = await fetch(`/api/projects/${project.id}`);
@@ -49,7 +49,7 @@
 	>
 		<button
 			class="absolute top-3 left-3 gap-2 btn bg-surface-100-800-token hover:bg-primary-100-800-token px-2 py-1 rounded-md"
-			on:click={() => {
+			onclick={() => {
 				onClose();
 				modalStore.close();
 			}}

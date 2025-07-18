@@ -4,7 +4,11 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { Project } from '$lib/types';
 	import type { PageData } from "./$types";
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data = $bindable() }: Props = $props();
 	data.projects = data?.projects ?? [];
 
 	const [ floatingClickMoreInfoRef, floatingClickMoreInfoContent ] = createFloatingActions({
@@ -45,7 +49,7 @@
 			</h1>
 			<p class="h3 mt-8 -mb-8 max-w-md lg:max-w-lg text-center lg:text-left">Welcome to my site! I'm a CS graduate looking for a software engineering role.</p>
 			<!-- <p class="h2 font-normal pt-7 pb-2">I like to make things.</p> -->
-			<p class="h2 font-normal pt-7 pb-0" />
+			<p class="h2 font-normal pt-7 pb-0"></p>
 			<div class="flex gap-4 w-auto float-left">
 				<a
 					href="https://www.linkedin.com/in/maxrountree/"

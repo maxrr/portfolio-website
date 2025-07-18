@@ -23,8 +23,14 @@
 	};
 
 	// I should be able to use the LayoutData type, but the auto-generated types just aren't cooperating
-	// export let data: LayoutData;
-	export let data: { test: string; streamed: { githubLastUpdated: Promise<any> } };
+	
+	interface Props {
+		// export let data: LayoutData;
+		data: { test: string; streamed: { githubLastUpdated: Promise<any> } };
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
 
 	// Set our page name for home, since 'Home' can't be reasonably inferred from '/'
 	// setPageName('/', 'Home');
@@ -62,7 +68,7 @@
 
 <div class="absolute float-right top-4 right-4"><LightSwitch /></div>
 
-<slot />
+{@render children?.()}
 
 <div
 	class="relative h-auto lg:h-0 bottom-0 lg:bottom-6 mt-2 md:mt-0 p-4 pt-0 lg:py-0 right-0 w-full align-middle text-primary-900 dark:text-surface-400 flex flex-col lg:flex-row items-center justify-center lg:justify-between"

@@ -1,12 +1,20 @@
 <script lang="ts">
+	import { createBubbler, stopPropagation } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	// Initialize modal stores because we need to interact with it
 	import { getModalStore, modeCurrent } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
 	import type { Project } from "$lib/types";
 	import { tilt } from "$lib/effects";
 
-	// Get our helper functions and types ready
-	export let project: Project;
+	
+	interface Props {
+		// Get our helper functions and types ready
+		project: Project;
+	}
+
+	let { project }: Props = $props();
 
 	function onCloseModal() {
 		document.body.classList.remove("body-stop-scroll", "body-stop-scroll-bar-adjustment");
@@ -31,7 +39,7 @@
 </script>
 
 <button
-	on:click={openModal}
+	onclick={openModal}
 	class="jacket"
 >
 	<div
@@ -69,8 +77,8 @@
 						<!-- TODO: Implement on:keypress (A11y suggestion) -->
 						<div
 							class="project-btn"
-							on:click|stopPropagation
-							on:keypress={() => {}}
+							onclick={stopPropagation(bubble('click'))}
+							onkeypress={() => {}}
 							role="button"
 							tabindex="0"
 							aria-label="Project link button to {project.links[0].site}"

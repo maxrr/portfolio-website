@@ -4,8 +4,13 @@
 	import type { PageData } from './$types';
 
 	// Once again...
-	// export let data: PageData;
-	export let data: { projects: Project[] };
+	
+	interface Props {
+		// export let data: PageData;
+		data: { projects: Project[] };
+	}
+
+	let { data = $bindable() }: Props = $props();
 	data.projects = data?.projects ?? [];
 </script>
 

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { LightSwitch } from '@skeletonlabs/skeleton';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { getPageName } from '$lib/util/pageNameResolver';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	let crumbs: string[] = [];
 
@@ -9,18 +14,18 @@
 	let i = 0;
 
 	function addCrumb(ptrLocal: number) {
-		let thisJump = getPageName($page.url.pathname.slice(0, ptrLocal));
+		let thisJump = getPageName(page.url.pathname.slice(0, ptrLocal));
 		crumbs.push(thisJump);
-		ptrLocal = $page.url.pathname.indexOf('/', ptrLocal + 1);
+		ptrLocal = page.url.pathname.indexOf('/', ptrLocal + 1);
 	}
 
-	while ((ptr = $page.url.pathname.indexOf('/', ptr + 1)) != -1) {
+	while ((ptr = page.url.pathname.indexOf('/', ptr + 1)) != -1) {
 		i++;
 		if (i > 7) break;
 
 		addCrumb(ptr);
 	}
-	addCrumb($page.url.pathname.length);
+	addCrumb(page.url.pathname.length);
 </script>
 
 <div class="flex flex-col w-full h-full min-h-inherit absolute top-0 left-0">
@@ -40,7 +45,7 @@
 	</div>
 </div>
 
-<slot />
+{@render children?.()}
 
 <style>
 	.big-header::after {
