@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@import "@skeletonlabs/skeleton";
+
+@import "@skeletonlabs/skeleton/optional/presets";
+
+@import "@skeletonlabs/skeleton/themes/wintry";
+
+@source "../node_modules/@skeletonlabs/skeleton-svelte/dist";
+
 @layer utilities {
 	.min-h-inherit {
 		min-height: inherit;
@@ -65,13 +73,13 @@ html, body {
 }
 
 .markdown-content blockquote {
-	@apply bg-surface-200-700-token;
+	@apply bg-surface-200-800;
 	@apply p-3;
 	@apply rounded-lg;
 }
 
 .markdown-content code, .markdown-content pre {
-	@apply bg-surface-50-900-token;
+	@apply bg-surface-50-950;
 }
 
 .markdown-content code:not(pre code) {
@@ -83,7 +91,7 @@ html, body {
 	@apply relative;
 	@apply font-medium;
 	@apply underline;
-	@apply text-primary-900-50-token;
+	@apply text-primary-950-50;
 	@apply transition-all;
 	@apply rounded-sm;
 	@apply z-20;
@@ -93,7 +101,7 @@ html, body {
 	/* background-clip: text;
 	-webkit-background-clip: text; */
 	@apply bg-gradient-to-br;
-	@apply variant-gradient-primary-tertiary;
+	@apply from-primary-500 to-tertiary-500;
 	@apply no-underline;
 	@apply text-white;
 	/* @apply px-1; */

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { popup } from '@skeletonlabs/skeleton';
-	import { createFloatingActions } from "svelte-floating-ui";
+		import { createFloatingActions } from "svelte-floating-ui";
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import type { Project } from '$lib/types';
 	import type { PageData } from "./$types";
@@ -69,7 +68,7 @@
 						/></svg
 					>
 				</a>
-				<div class="card py-1 px-2 bg-gradient-to-r variant-gradient-tertiary-primary" data-popup="popupLinkedin">
+				<div class="card py-1 px-2 bg-gradient-to-r from-tertiary-500 to-primary-500" data-popup="popupLinkedin">
 					<p>/in/maxrountree</p>
 				</div>
 				<a
@@ -89,7 +88,7 @@
 						/></svg
 					>
 				</a>
-				<div class="card py-1 px-2 bg-gradient-to-r variant-gradient-primary-secondary text-white" data-popup="popupGithub">
+				<div class="card py-1 px-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white" data-popup="popupGithub">
 					<p>/maxrr</p>
 				</div>
 				<a
@@ -109,7 +108,7 @@
 					>
 				</a>
 			</div>
-			<div class="card py-1 px-2 bg-gradient-to-r variant-gradient-secondary-tertiary text-white" data-popup="popupEmail">
+			<div class="card py-1 px-2 bg-gradient-to-r from-secondary-500 to-tertiary-500 text-white" data-popup="popupEmail">
 				<p>max@rountree.me</p>
 			</div>
 		</div>
@@ -136,7 +135,7 @@
 			</div>
 			<a href="/projects">
 				<button
-					class="btn bg-gradient-to-br variant-gradient-secondary-tertiary text-white rounded-md mt-2 px-4 py-2"
+					class="btn bg-gradient-to-br from-secondary-500 to-tertiary-500 text-white rounded-md mt-2 px-4 py-2"
 					>View all projects</button
 				>
 			</a>

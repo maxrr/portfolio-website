@@ -1,9 +1,10 @@
 <script>
 	import { page } from '$app/stores';
-	import { LightSwitch } from '@skeletonlabs/skeleton';
 </script>
 
-<div class="absolute top-4 right-4"><LightSwitch /></div>
+<div class="absolute top-4 right-4">
+	<!-- <LightSwitch /> -->
+</div>
 
 <div class="w-full h-full flex flex-wrap justify-center items-center text-center">
 	<div>

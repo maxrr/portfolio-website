@@ -1,21 +1,15 @@
 <!-- https://github.com/skeletonlabs/skeleton/blob/master/sites/skeleton.dev/src/lib/modals/examples/ModalExampleForm.svelte -->
 <script lang="ts">
 	// Initialize modal stores because we need to interact with it
-	import { ProgressRadial, getModalStore } from '@skeletonlabs/skeleton';
-	const modalStore = getModalStore();
+	import { ProgressRing, Modal } from '@skeletonlabs/skeleton-svelte';
 
 	// Get our helper functions and our types ready for action
 	import type { Project } from '$lib/types';
-	import { error } from '@sveltejs/kit';
-	import { getProject } from '$lib/util/loadProjects';
-	import Error from "../../routes/+error.svelte";
 
-	// @ts-ignore
 	// Typescript does not and will probably never type these correctly :(
-	let project: Project = $modalStore[0]?.valueAttr?.project;
+	let project: Project | null = $state(null);
 
-	// @ts-ignore
-	const onClose: Function = $modalStore[0]?.valueAttr?.onClose;
+	// const onClose: Function = $modalStore[0]?.valueAttr?.onClose;
 
 	let renderedMarkdown = $state('');
 	let fetchCompleted = $state(false);
@@ -29,7 +23,7 @@
 			// throw "test"; // Uncomment to test error display.
 		} catch (err) {
 			renderedMarkdown =
-				'<div class="alert variant-filled-error">An error occured while fetching project details. Please refresh the page or try again later.</div>';
+				'<div class="alert preset-filled-error-500">An error occured while fetching project details. Please refresh the page or try again later.</div>';
 		}
 	}
 
@@ -48,7 +42,7 @@
 		class="jacket w-full h-full md:w-3/4 xl:w-3/5s max-w-3xl dark:bg-surface-800 bg-surface-50 rounded-lg relative"
 	>
 		<button
-			class="absolute top-3 left-3 gap-2 btn bg-surface-100-800-token hover:bg-primary-100-800-token px-2 py-1 rounded-md"
+			class="absolute top-3 left-3 gap-2 btn bg-surface-100-900 hover:bg-primary-100-900 px-2 py-1 rounded-md"
 			onclick={() => {
 				onClose();
 				modalStore.close();
@@ -86,7 +80,7 @@
 						<div class="flex flex-wrap gap-1.5 gap-y-1 mt-2">
 							{#each project.tags as tag}
 								<span
-									class="badge variant-soft-surface dark:variant-surface rounded-md px-1.5 py-0.5 text-sm"
+									class="badge preset-tonal-surface dark:variant-surface rounded-md px-1.5 py-0.5 text-sm"
 									>{tag}</span
 								>
 							{/each}
@@ -98,7 +92,7 @@
 							{#each project.links as link}
 								<a href={link.url} target="_blank" class="max-w-fit">
 									<button
-										class="btn variant-glass-surface hover:variant-soft-surface py-1 px-3 rounded-md"
+										class="btn preset-tonal-surface hover:preset-tonal-surface py-1 px-3 rounded-md"
 									>
 										{#if link.site == 'github'}<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +124,7 @@
 						{#if !fetchCompleted}
 						<hr class="my-4" />
 						<div class="w-full flex justify-center">
-							<ProgressRadial stroke={150} width={'w-8'} />
+							<ProgressRing strokeWidth={"150px"} width={'w-8'} />
 						</div>
 						{:else if renderedMarkdown.length > 0}
 						<hr class="my-4" />

@@ -1,0 +1,1 @@
+<!-- TODO: Add custom LightSwitch type following this guide: https://www.skeleton.dev/docs/guides/cookbook/light-switch -->

@@ -3,27 +3,24 @@
 	// import { getPageTitle, setPageName } from '$lib/util/pageNameResolver';
 	// import { page } from '$app/stores';
 	import '../app.css';
-	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import moment from 'moment';
-	import { storePopup, initializeStores, Modal, popup, LightSwitch } from '@skeletonlabs/skeleton';
-	import type { ModalComponent } from '@skeletonlabs/skeleton';
 
 	// https://vercel.com/docs/analytics/quickstart
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 
-	inject({ mode: dev ? 'development' : 'production' })
+	inject({ mode: dev ? 'development' : 'production' });
 
-	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+	// storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
-	const modalComponentRegistry: Record<string, ModalComponent> = {
-		modalProjectCard: {
-			ref: ModalProjectCard
-		}
-	};
+	// const modalComponentRegistry: Record<string, ModalComponent> = {
+	// 	modalProjectCard: {
+	// 		ref: ModalProjectCard
+	// 	}
+	// };
 
 	// I should be able to use the LayoutData type, but the auto-generated types just aren't cooperating
-	
+
 	interface Props {
 		// export let data: LayoutData;
 		data: { test: string; streamed: { githubLastUpdated: Promise<any> } };
@@ -34,9 +31,6 @@
 
 	// Set our page name for home, since 'Home' can't be reasonably inferred from '/'
 	// setPageName('/', 'Home');
-
-	// Initialize our Skeleton stores (for modals and such)
-	initializeStores();
 
 	// Find out the last time the repository for this project (maxrr/portfolio-website) was committed to
 	let now = moment();
@@ -64,9 +58,11 @@
 	<meta name="description" content={pageTitle} />
 </svelte:head> -->
 
-<Modal components={modalComponentRegistry} />
+<!-- <Modal components={modalComponentRegistry} /> -->
 
-<div class="absolute float-right top-4 right-4"><LightSwitch /></div>
+<div class="absolute float-right top-4 right-4">
+	<!-- <LightSwitch /> -->
+</div>
 
 {@render children?.()}
 
@@ -98,7 +94,8 @@
 	{/await}
 
 	<p class="text-center">
-		Made with <a href="https://kit.svelte.dev/" target="_blank"><strong>SvelteKit</strong></a><!-- ,
+		Made with <a href="https://kit.svelte.dev/" target="_blank"><strong>SvelteKit</strong></a
+		><!-- ,
 		<a href="https://tailwindcss.com/" target="_blank"><strong>Tailwind</strong></a>, and
 		<a href="https://www.skeleton.dev/" target="_blank"><strong>Skeleton<strong /></strong></a> -->.
 		Powered by <a href="https://vercel.com" target="_blank"><strong>Vercel</strong></a>.
@@ -112,6 +109,6 @@
 		@apply underline;
 	}
 	p > a:hover {
-		@apply text-surface-600-300-token;
+		@apply text-surface-700-300;
 	}
 </style>

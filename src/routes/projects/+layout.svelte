@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { LightSwitch } from '@skeletonlabs/skeleton';
-	import { page } from '$app/state';
+		import { page } from '$app/state';
 	import { getPageName } from '$lib/util/pageNameResolver';
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -30,7 +29,7 @@
 
 <div class="flex flex-col w-full h-full min-h-inherit absolute top-0 left-0">
 	<div class="flex w-full h-16 items-center p-6">
-		<a href="/"><h1 class="mb-1 text-3xl text-token big-header relative">rountree.me</h1></a>
+		<a href="/"><h1 class="mb-1 text-3xl base-font-color big-header relative">rountree.me</h1></a>
 
 		<ol
 			class="breadcrumb ml-4 max-[420px]:absolute max-[420px]:top-[3.75rem] max-[420px]:left-4 h-0 w-0 overflow-visible"
@@ -41,7 +40,9 @@
 			{/each}
 		</ol>
 
-		<div class="absolute top-4 right-4"><LightSwitch /></div>
+		<div class="absolute top-4 right-4">
+			<!-- <LightSwitch /> -->
+		</div>
 	</div>
 </div>
 

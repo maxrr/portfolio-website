@@ -3,7 +3,6 @@
 
 	const bubble = createBubbler();
 	// Initialize modal stores because we need to interact with it
-	import { getModalStore, modeCurrent } from '@skeletonlabs/skeleton';
 	const modalStore = getModalStore();
 	import type { Project } from "$lib/types";
 	import { tilt } from "$lib/effects";
@@ -43,7 +42,7 @@
 	class="jacket"
 >
 	<div
-		class="card project-card-{project.id} p-0 dark:variant-soft-surface relative !filter-none shadow-md hover:outline-primary-50/900" use:tilt={{ max: 15, perspective: 800 }}
+		class="card project-card-{project.id} p-0 dark:preset-tonal-surface relative !filter-none shadow-md hover:outline-primary-50/900" use:tilt={{ max: 15, perspective: 800 }}
 	>
 		<div class="w-[288px] h-[96px]">
 			{#if project.img && project.img.url && project.img.alt}
@@ -57,7 +56,7 @@
 				<div class="flex flex-wrap gap-1 gap-y-1">
 					{#each project.tags as tag}
 						<span
-							class="badge variant-soft-surface dark:variant-ghost-surface rounded-md px-1.5 py-0.5 text-[0.75rem]"
+							class="badge preset-tonal-surface dark:preset-tonal-surface border border-surface-500 rounded-md px-1.5 py-0.5 text-[0.75rem]"
 							>{tag}</span
 						>
 					{/each}
@@ -99,38 +98,6 @@
 				{/if}
 			</div>
 		</div>
-
-		<!-- Uncomment to re-enable 'open' button instead of having the whole card be the open button -->
-		<!-- {#if project.id} -->
-		<!-- <button
-			on:click={() => {
-				const modal = {
-					type: 'component',
-					component: 'modalProjectCard',
-					valueAttr: { project: project }
-				};
-				// @ts-ignore
-				// This error won't go away because of some wacky typescript shenanigans... not going to spend too much time on it
-				modalStore.trigger(modal);
-			}}
-			class="btn variant-glass-surface hover:variant-soft-surface py-1 px-3 rounded-md absolute bottom-4 right-4 gap-1"
-		>
-			<svg
-				clip-rule="evenodd"
-				fill-rule="evenodd"
-				stroke-linejoin="round"
-				stroke-miterlimit="2"
-				viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				><path
-					d="m22 5c0-.478-.379-1-1-1h-18c-.62 0-1 .519-1 1v14c0 .621.52 1 1 1h18c.478 0 1-.379 1-1zm-7.565 3.522h-1.218c-.414 0-.75-.336-.75-.75s.336-.75.75-.75h3.033c.414 0 .75.336.75.75v3.05c0 .414-.336.75-.75.75s-.75-.336-.75-.75v-1.244l-5.918 5.922h1.219c.414 0 .75.336.75.75s-.336.75-.75.75c-.715 0-2.319 0-3.033 0-.415 0-.75-.336-.75-.75 0-.715 0-2.335 0-3.05 0-.414.335-.75.75-.75.414 0 .75.336.75.75v1.243z"
-					fill-rule="nonzero"
-				/></svg
-			>More
-		</button> -->
-		<!-- {/if} -->
 	</div>
 </button>
 
@@ -150,7 +117,7 @@
 	.project-btn {
 		@apply btn;
 		/* @apply variant-glass-surface; */
-		@apply variant-soft-surface;
+		@apply preset-tonal-surface;
 		@apply py-1;
 		@apply px-3;
 		@apply rounded-md;
@@ -163,7 +130,7 @@
 	}
 
 	.project-btn:hover {
-		@apply variant-soft-surface;
+		@apply preset-tonal-surface;
 	}
 
 	.description {
