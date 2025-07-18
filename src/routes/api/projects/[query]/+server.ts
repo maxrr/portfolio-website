@@ -15,7 +15,7 @@ export async function GET({ params }) {
                 const project = await getProject(params.query);
                 // console.log(project);
                 if (project == null)
-                    throw error((errorCode = 404), `Project with id ${params.query} not found.`);
+                    error((errorCode = 404), `Project with id ${params.query} not found.`);
                 return json(project);
     }   
 	} catch (err) {
@@ -24,6 +24,6 @@ export async function GET({ params }) {
 
         console.error(`Error occurred on projects load; query: \"${params.query}\"`);
         console.error(err)
-        throw error(500, "Error on project load");
+        error(500, "Error on project load");
     }
 }

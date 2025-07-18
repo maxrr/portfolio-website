@@ -12,6 +12,6 @@ export async function load({ fetch }) {
     } catch (err) {
         console.error("Error when loading project data");
         console.error(err);
-        throw error(500, "Error while loading project data");
+        error(500, "Error while loading project data");
     }
 }
