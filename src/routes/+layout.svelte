@@ -15,40 +15,41 @@
 	let { data, children }: Props = $props();
 	let now = moment();
 
-	async function date(): Promise<moment.Moment> {
+	// TODO: Derive this from the func below
+	let lastUpdatedTitle = $state('Retrieving details...');
+
+	async function retrieveLastCommitDatetime(): Promise<moment.Moment> {
 		const commitInfo = await data.streamed.githubLastUpdated;
 		return Promise.resolve(moment(commitInfo?.commit?.author?.date));
 	}
 </script>
 
 <div class="absolute float-right top-4 right-4">
-	<!-- <LightSwitch /> -->
+	<!-- TODO: <LightSwitch /> -->
 </div>
 
 {@render children?.()}
 
 <div
-	class="relative h-auto lg:h-0 bottom-0 lg:bottom-6 mt-2 md:mt-0 p-4 pt-0 lg:py-0 right-0 w-full align-middle text-primary-900 dark:text-surface-400 flex flex-col lg:flex-row items-center justify-center lg:justify-between"
+	class="relative h-auto lg:h-0 bottom-0 lg:bottom-6 mt-2 md:mt-0 p-4 pt-0 lg:py-0 right-0 w-full align-middle flex flex-col lg:flex-row items-center justify-start lg:justify-between"
 >
-	{#await date()}
-		<p class="mb-1 mt-12 lg:m-0 justify-self-start">Last updated...</p>
-	{:then lastUpdated}
-		{#if lastUpdated > now}
-			<p class="mb-1 lg:m-0 justify-self-start" title={lastUpdated.format('M/D/YY h:mma Z')}>
-				Last updated... <a href="https://github.com/maxrr/portfolio-website" target="_blank"
-					><strong>a while ago</strong></a
-				>?
-			</p>
-		{:else}
-			<p class="mb-1 lg:m-0 justify-self-start" title={lastUpdated.format('M/D/YY h:mma Z')}>
-				Last updated <a href="https://github.com/maxrr/portfolio-website" target="_blank"
-					><strong>{lastUpdated.from(now)}</strong></a
-				>.
-			</p>
-		{/if}
-	{:catch}
-		<p class="mb-1 mt-12 md:m-0 justify-self-start">Error fetching last commit date :(</p>
-	{/await}
+	<p class="mb-1 mt-12 lg:m-0 justify-self-start" title={lastUpdatedTitle}>
+		Last updated <a href="https://github.com/maxrr/portfolio-website" target="_blank"
+			><strong>
+				{#await retrieveLastCommitDatetime()}
+					...
+				{:then lastUpdated}
+					{#if lastUpdated > now}
+						a while ago?
+					{:else}
+						{lastUpdated.from(now)}.
+					{/if}
+				{:catch}
+					in another timeline...
+				{/await}
+			</strong></a
+		>
+	</p>
 
 	<p class="text-center">
 		Made overkill with <a href="https://kit.svelte.dev/" target="_blank"
@@ -59,10 +60,9 @@
 
 <style>
 	p > a {
-		/* @apply transition-all; */ /* mass-replaced */
-		/* @apply underline; */ /* mass-replaced */
+		transition: all 100ms ease-in-out;
 	}
 	p > a:hover {
-		/* @apply text-surface-700-300; */ /* mass-replaced */
+		color:hsl(from var(--color-base-content) h s calc(l + 20))
 	}
 </style>

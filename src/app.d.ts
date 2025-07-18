@@ -3,9 +3,7 @@
 // and what to do when importing types
 declare namespace App {
 	// interface Locals {}
-	// interface PageData {
-	// 	projects?: Project[],
-	// }
+	// interface PageData {}
 	// interface Error {}
 	// interface Platform {}
 }

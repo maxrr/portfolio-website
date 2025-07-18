@@ -1,37 +1,36 @@
 <svelte:head>
 	<title>Home • rountr.ee</title>
 	<meta name="description" content="Homepage of rountr.ee, Max Rountree's portfolio website" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+		rel="stylesheet"
+	/>
 </svelte:head>
 
-<!-- 
-	TODO: Figure out why I HAVE to specify h-auto min-h-full...
-	It seems like the calculation using h-full here takes 100% of the element's `auto` calculated height
-	instead of the height set by min-height. Very strange.
--->
-<!-- <div class="h-auto min-h-screen m-auto flex items-center py-24"> -->
 <div class="min-h-screen flex items-center justify-center py-24 pb-8 md:pb-24">
-	<!-- <div
-		class="mx-auto flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-4/5 xl:w-3/4 max-w-6xl gap-12 md:gap-24"
-	> -->
-	<!-- TODO: Use this to change outline color, also use tilt.js <p>{$modeCurrent}</p> -->
 	<div
-		class="flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-3/4 max-w-4xl gap-12 md:gap-24"
+		class="flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-5 w-3/4 max-w-5xl gap-12 md:gap-24"
 	>
 		<!-- Left panel - name, subtitle, links -->
 		<div class="flex flex-col gap-4 justify-center items-center lg:items-start">
 			<h1
-				class="font-extrabold text-6xl sm:text-7xl lg:text-8xl mb-1 -ml-1 text-center lg:text-left"
+				class="mb-1 -ml-1 font-extrabold text-7xl sm:text-8xl lg:text-9xl text-center lg:text-left"
 			>
 				Max<br />
 				<span class="underline underline-offset-[30px]">Rountree</span>
 			</h1>
-			<p class="h3 mt-8 -mb-8 max-w-md lg:max-w-lg text-center lg:text-left">Welcome to my site! I'm an aspiring software engineer.</p>
-			<!-- <p class="h2 font-normal pt-7 pb-2">I like to make things.</p> -->
-			<p class="h2 font-normal pt-7 pb-0"></p>
-			<div class="flex gap-4 w-auto float-left">
+			<h2 class="mt-8 -mb-8 max-w-md lg:max-w-lg text-center lg:text-left text-4xl">
+				Welcome to my site! I'm an aspiring software engineer.
+			</h2>
+			<!-- <p class="h2 font-normal pt-7 pb-0"></p> -->
+		</div>
+
+		<!-- Right panel -->
+		<!-- TODO: Component-ify this -->
+		<div class="bg-purple-500">
+			<div class="flex gap-4 w-auto h-auto bg-red-500 float-left">
 				<a
 					href="https://www.linkedin.com/in/maxrountree/"
 					target="_blank"
@@ -45,7 +44,7 @@
 						/></svg
 					>
 				</a>
-				<div class="card py-1 px-2 bg-gradient-to-r from-tertiary-500 to-primary-500" data-popup="popupLinkedin">
+				<div class="card py-1 px-2 bg-gradient-to-r from-tertiary-500 to-primary-500">
 					<p>/in/maxrountree</p>
 				</div>
 				<a
@@ -60,7 +59,7 @@
 						/></svg
 					>
 				</a>
-				<div class="card py-1 px-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white" data-popup="popupGithub">
+				<div class="card py-1 px-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
 					<p>/maxrr</p>
 				</div>
 				<a
@@ -75,7 +74,7 @@
 					>
 				</a>
 			</div>
-			<div class="card py-1 px-2 bg-gradient-to-r from-secondary-500 to-tertiary-500 text-white" data-popup="popupEmail">
+			<div class="card py-1 px-2 bg-gradient-to-r from-secondary-500 to-tertiary-500 text-white">
 				<p>max@rountree.me</p>
 			</div>
 		</div>
@@ -84,20 +83,21 @@
 
 <style>
 	h1 {
-/* @apply drop-shadow-2xl; */ /* mass-replaced */
+		font-family: 'IBM Plex Mono', monospace;
+		/* @apply drop-shadow-2xl; */ /* mass-replaced */
 	}
 
 	path {
-/* @apply fill-token; */ /* mass-replaced */
+		/* @apply fill-token; */ /* mass-replaced */
 	}
 
 	a > svg > path {
-/* @apply transition-all; */ /* mass-replaced */
+		/* @apply transition-all; */ /* mass-replaced */
 		transition: 0.12s all ease;
 	}
 
 	a:hover > svg > path {
-/* @apply brightness-50; */ /* mass-replaced */
+		/* @apply brightness-50; */ /* mass-replaced */
 		transform: scale(0.95) translate(2.5%, 2.5%);
 	}
 </style>
