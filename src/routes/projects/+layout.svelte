@@ -62,7 +62,7 @@
 		@apply left-0;
 	}
 
-	/* More in app.postcss */
+	/* More in app.css */
 	.big-header:hover::after {
 		transform: scaleX(1);
 	}

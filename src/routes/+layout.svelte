@@ -2,7 +2,7 @@
 	import ModalProjectCard from '$lib/components/ModalProjectCard.svelte';
 	// import { getPageTitle, setPageName } from '$lib/util/pageNameResolver';
 	// import { page } from '$app/stores';
-	import '../app.postcss';
+	import '../app.css';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import moment from 'moment';
 	import { storePopup, initializeStores, Modal, popup, LightSwitch } from '@skeletonlabs/skeleton';

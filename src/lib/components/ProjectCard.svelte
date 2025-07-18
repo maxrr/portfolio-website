@@ -135,6 +135,8 @@
 </button>
 
 <style>
+	@reference "tailwindcss"
+
 	path {
 		@apply fill-token;
 	}

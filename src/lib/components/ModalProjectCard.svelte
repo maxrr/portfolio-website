@@ -148,6 +148,8 @@
 {/if}
 
 <style>
+	@reference "tailwindcss"
+	
 	.jacket {
 		overflow: hidden;
 	}
