@@ -9,8 +9,6 @@
 	/>
 </svelte:head>
 
-<!-- TODO: Konami code easter egg -->
-
 <h1 class="text-2xl font-bold">
 	Max Rountree <span class="px-1">•</span> Aspiring Software Engineer
 </h1>
