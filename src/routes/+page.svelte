@@ -48,24 +48,6 @@
 	</div>
 </div>
 
-<h2 class="text-xl">Work experience</h2>
-<p>
-	Most recently, I've been working on the 25-large data team for my local school system. We process
-	records for our students' standard tests, ..., and ensure that the data we collect is easily
-	accessible to other departments.
-
-	<br />
-	<br />
-
-	Our team works with industry-standard tooling like
-	<a
-		href="https://www.informatica.com/blogs/welcome-to-informatica-intelligent-cloud-services.html"
-		target="_blank"
-		class="link">IICS</a
-	>, Snowflake and dbt, and I was presented the opportunity to begin implementing version control
-	best-practices with Git and GitHub.
-</p>
-
 <style>
 	/* https://svelte.dev/docs/kit/icons */
 	/* https://iconify.design/docs/usage/css/ */
