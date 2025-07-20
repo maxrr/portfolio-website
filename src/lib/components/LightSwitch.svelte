@@ -3,6 +3,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	const LIGHT_THEME = "goolius";
+	const DARK_THEME = "glorbo";
+
 	let dark: boolean = $state(true);
 	let loading = $state(true);
     
@@ -63,7 +66,7 @@
 	<input
         id="theme-controller"
 		type="checkbox"
-		value="emerald"
+		value={LIGHT_THEME}
 		class="theme-controller"
 		checked={!dark}
 		aria-checked={!dark}
@@ -94,3 +97,13 @@
 		></svg
 	>
 </label>
+
+<style>
+	label {
+		transition: all 200ms ease-in-out;
+	}
+	label:hover {
+		/* background-color: var(--color-base-300) */
+		background-color: color-mix(in oklab, var(--color-base-300), #000, 0%);
+	}
+</style>

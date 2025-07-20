@@ -6,8 +6,99 @@
 /* https://daisyui.com/docs/themes/ */
 @plugin "daisyui" {
 	themes:
-		emerald --default,
-		dim --prefersdark;
+		goolius --default,
+		glorbo --prefersdefault;
+}
+
+/* https://daisyui.com/docs/themes/#how-to-add-a-new-custom-theme */
+/* https://github.com/saadeghi/daisyui/blob/master/packages/daisyui/src/themes/dim.css */
+@plugin "daisyui/theme" {
+	name: 'glorbo';
+	prefersdark: true;
+	color-scheme: dark;
+
+	--color-base-100: oklch(30.857% 0.023 264.149);
+	--color-base-200: oklch(28.036% 0.019 264.182);
+	--color-base-300: oklch(26.346% 0.018 262.177);
+	--color-base-content: oklch(93% 0.031 222.959);
+	--color-primary: oklch(86.133% 0.081 210);
+	--color-primary-content: oklch(17.226% 0.028 139.549);
+	--color-secondary: oklch(73.375% 0.165 35.353);
+	--color-secondary-content: oklch(14.675% 0.033 35.353);
+	--color-accent: oklch(74.229% 0.133 311.379);
+	--color-accent-content: oklch(14.845% 0.026 311.379);
+	--color-neutral: oklch(24.731% 0.02 264.094);
+	--color-neutral-content: oklch(82.901% 0.031 222.959);
+	--color-info: oklch(86.078% 0.142 206.182);
+	--color-info-content: oklch(17.215% 0.028 206.182);
+	--color-success: oklch(86.171% 0.142 166.534);
+	--color-success-content: oklch(17.234% 0.028 166.534);
+	--color-warning: oklch(86.163% 0.142 94.818);
+	--color-warning-content: oklch(17.232% 0.028 94.818);
+	--color-error: oklch(82.418% 0.099 33.756);
+	--color-error-content: oklch(16.483% 0.019 33.756);
+
+	/* border-radius */
+	--radius-selector: 1rem;
+	--radius-field: 0.5rem;
+	--radius-box: 1rem;
+
+	/* base sizes */
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+
+	/* border size */
+	--border: 1px;
+
+	/* effects */
+	--depth: 0;
+	--noise: 0;
+}
+
+/* https://daisyui.com/docs/themes/#how-to-add-a-new-custom-theme */
+/* https://github.com/saadeghi/daisyui/blob/master/packages/daisyui/src/themes/dim.css */
+@plugin "daisyui/theme" {
+	name: 'goolius';
+	default: true;
+	prefersdark: false;
+	color-scheme: light;
+
+	--color-base-100: oklch(100% 0.025 40);
+	--color-base-200: oklch(93% 0.019 40);
+	--color-base-300: oklch(86% 0.015 40);
+	--color-base-content: oklch(20.519% 0.022 40);
+	--color-primary: oklch(60.662% 0.155 40);
+	--color-primary-content: oklch(100.662% 0.055 40);
+	--color-secondary: oklch(61.302% 0.202 261.294);
+	--color-secondary-content: oklch(100% 0 0);
+	--color-accent: oklch(72.772% 0.149 33.2);
+	--color-accent-content: oklch(0% 0 0);
+	--color-neutral: oklch(35.519% 0.032 262.988);
+	--color-neutral-content: oklch(98.462% 0.001 247.838);
+	--color-info: oklch(72.06% 0.191 231.6);
+	--color-info-content: oklch(0% 0 0);
+	--color-success: oklch(64.8% 0.15 160);
+	--color-success-content: oklch(0% 0 0);
+	--color-warning: oklch(84.71% 0.199 83.87);
+	--color-warning-content: oklch(0% 0 0);
+	--color-error: oklch(71.76% 0.221 22.18);
+	--color-error-content: oklch(0% 0 0);
+
+	/* border-radius */
+	-radius-selector: 1rem;
+	--radius-field: 0.5rem;
+	--radius-box: 1rem;
+
+	/* base sizes */
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
+
+	/* border size */
+	--border: 1px;
+
+	/* effects */
+	--depth: 0;
+	--noise: 0;
 }
 
 html,
@@ -16,20 +107,11 @@ body {
 	min-height: 100vh;
 }
 
-/* TODO: Fix this */
-/* html:not([data-theme="dark"]) {
+html {
 	background-image: radial-gradient(
 		circle at 50% -30rem,
-		hsl(from var(--color-base-100) h calc(s * 5) calc(l -22)) 5rem,
-		hsl(from var(--color-base-300) h calc(s * 5) calc(l -22)) 95rem
-	);
-} */
-
-html .dark {
-	background-image: radial-gradient(
-		circle at 50% -30rem,
-		hsl(from var(--color-base-100) h calc(s * 1.8) calc(l + 22)) 5rem,
-		hsl(from var(--color-base-300) h calc(s * 1.6) l) 95rem
+		var(--color-base-100) 5rem,
+		var(--color-base-300) 95rem
 	);
 }
 
@@ -42,4 +124,12 @@ h5,
 h6,
 li {
 	font-family: 'Ubuntu', sans-serif;
+}
+
+.link {
+	transition: all 200ms ease-in-out;
+}
+
+.link:hover {
+	color: hsl(from currentColor h calc(s * 1.1) calc(l * 1.1));
 }

@@ -15,38 +15,42 @@
 
 	let { data, children }: Props = $props();
 	let now = moment();
-
-	// TODO: Derive this from the func below
-	let lastUpdatedTitle = $state('Retrieving details...');
+	let lastUpdatedTooltip = $state('Retrieving details...');
 
 	async function retrieveLastCommitDatetime(): Promise<moment.Moment> {
-		const commitInfo = await data.streamed.githubLastUpdated;
-		return Promise.resolve(moment(commitInfo?.commit?.author?.date));
+		const commitInfo = await data?.streamed?.githubLastUpdated;
+		const commitTimestamp = moment(commitInfo?.commit?.author?.date);
+
+		lastUpdatedTooltip = commitTimestamp.format('M/D/YY H:mma Z');
+
+		return Promise.resolve(commitTimestamp);
 	}
 </script>
 
 <div class="w-full h-full min-h-screen flex flex-col items-center">
-	<div
-		class="w-full max-w-[52rem] min-h-screen pt-16 pb-4 px-10 flex flex-col justify-between gap-16"
-	>
-		<div class="flex justify-between items-center">
+	<div class="w-full max-w-[52rem] min-h-screen py-4 px-10 flex flex-col gap-16 justify-between">
+		<div class="flex justify-between items-center justify-self-start">
 			<a href="/">
 				<div class="-ml-[10px] btn btn-ghost px-2">
-					<h1 class="font-bold text-2xl">rountr.ee</h1>
+					<h1 class="underline-animation font-bold text-2xl">rountr.ee</h1>
 				</div>
 			</a>
 			<LightSwitch />
 		</div>
 
-		<div class="pb-40 grid gap-5 mb-auto">
+		<div class="grid gap-5">
 			{@render children?.()}
 		</div>
 
 		<div
 			class="flex flex-col sm:flex-row gap-1 sm:gap-4 items-center justify-center md:justify-between justify-self-end"
 		>
-			<p class="md:m-0 justify-self-start" title={lastUpdatedTitle}>
-				Last updated <a href="https://github.com/maxrr/portfolio-website" target="_blank" class="link"
+			<p class="md:m-0 justify-self-start" title={lastUpdatedTooltip}>
+				Last updated <a
+					href="https://github.com/maxrr/portfolio-website"
+					target="_blank"
+					class="link tooltip"
+					data-tip={lastUpdatedTooltip}
 					><strong>
 						{#await retrieveLastCommitDatetime()}
 							...
@@ -73,11 +77,22 @@
 </div>
 
 <style>
-	.link {
-		transition: all 100ms ease-in-out;
+	.underline-animation::after {
+		content: '';
+		transform: scaleX(0);
+		transition: 300ms all cubic-bezier(0.165, 0.84, 0.44, 1);
+		transform-origin: bottom left;
+		background-color: rgb(var(--theme-font-color-base));
+		display: inline-block;
+		width: 100%;
+		position: absolute;
+		height: 0.25rem;
+		bottom: 0;
+		left: 0;
 	}
-	
-	.link:hover {
-		color: hsl(from var(--color-base-content) h s calc(l + 20));
+
+	/* More in app.postcss */
+	.underline-animation:hover::after {
+		transform: scaleX(1);
 	}
 </style>
