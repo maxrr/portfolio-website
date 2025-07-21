@@ -13,13 +13,13 @@
 	Max Rountree <span class="px-1">•</span> Aspiring Software Engineer
 </h1>
 <p>
-	Hi, I'm Max, and welcome to my site. I'm an aspiring software engineer with an interest in backend
+	Hi, welcome to my site. I'm an aspiring software engineer with an interest in backend
 	technologies. Like many others looking to enter the field of software engineering, I went to
 	college
 	<a href="https://youtu.be/5-MO1IQvDmI?si=5mDeh9LaF_95Z4BY" target="_blank" class="link"
 		>(go badgers!)</a
 	>
-	and followed a typical computer science curriculum.
+	and took the standard computer science courses.
 </p>
 
 <div class="w-full flex flex-col justify-center gap-3">
