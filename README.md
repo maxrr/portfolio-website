@@ -1,10 +1,5 @@
 # My Portfolio Website
 
-Welcome to my portfolio website! I've used a handful of tools for the first time while making this:
-
-- [SvelteKit](https://kit.svelte.dev)
-- [Vite](https://vitejs.dev/)
-- [Skeleton](https://www.skeleton.dev/)
-- [Vercel](https://vercel.com/dashboard)
+This is my portfolio website, built with plenty of love using [SvelteKit](https://svelte.dev/) and [daisyUI](https://daisyui.com/).
 
 Visit this site at [rountree.me](https://rountree.me)!
