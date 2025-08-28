@@ -28,7 +28,7 @@
 </script>
 
 <div class="w-full h-full min-h-screen flex flex-col items-center">
-	<div class="w-full max-w-[52rem] min-h-screen py-4 px-10 flex flex-col gap-8 justify-between">
+	<div class="w-full max-w-[52rem] min-h-screen pt-4 pb-5 px-10 flex flex-col gap-8 justify-between">
 		<div class="flex justify-between items-center justify-self-start">
 			<a href="/">
 				<div class="-ml-[10px] btn btn-ghost px-2">

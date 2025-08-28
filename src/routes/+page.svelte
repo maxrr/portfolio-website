@@ -14,16 +14,10 @@
 </h1>
 <p>
 	Hi, welcome to my site. I'm an aspiring software engineer with an interest in backend
-	technologies. Like many others looking to enter the field of software engineering, I went to
-	college
-	<a href="https://youtu.be/5-MO1IQvDmI?si=5mDeh9LaF_95Z4BY" target="_blank" class="link"
-		>(go badgers!)</a
-	>
-	and took the standard computer science courses.
+	technologies. I'd love to connect with you — just use the links below.
 </p>
 
-<div class="w-full flex flex-col justify-center gap-3">
-	<p>You can connect with me through:</p>
+<div class="w-full flex flex-col justify-center gap-4">
 	<div class="w-full flex gap-4">
 		{#snippet social(
 			/** @type {string} */ link,
